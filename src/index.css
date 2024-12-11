@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "The Jamsil";
+  src: url("./assets/fonts/Pretendard-Regular.woff") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Tailwind 기본 폰트 적용 */
+@layer base {
+  body {
+    @apply font-jamsil;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* tailwind.css 또는 custom CSS 파일에 추가 */
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px; /* 스크롤바 너비 */
+    height: 8px; /* 가로 스크롤바 높이 */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #e3c04d; /* 스크롤바 색상 */
+    border-radius: 4px; /* 둥근 모서리 */
+    border: 2px solid #fff; /* 내부 여백을 위한 테두리 */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #e9cd6a; /* 호버 시 색상 변경 */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #f8f8f8; /* 스크롤 트랙 배경 */
+    border-radius: 4px;
+  }
+  .custom-scrollbar-big::-webkit-scrollbar {
+    width: 15px; /* 스크롤바 너비 */
+    height: 16px; /* 가로 스크롤바 높이 */
+  }
+
+  .custom-scrollbar-big::-webkit-scrollbar-thumb {
+    background-color: #d6d3d3; /* 스크롤바 색상 */
+    border-radius: 4px; /* 둥근 모서리 */
+    border: 2px solid #fff; /* 내부 여백을 위한 테두리 */
+  }
+
+  .custom-scrollbar-big::-webkit-scrollbar-thumb:hover {
+    background-color: #ede9c1; /* 호버 시 색상 변경 */
+  }
+
+  .custom-scrollbar-big::-webkit-scrollbar-track {
+    background-color: #f8f8f8; /* 스크롤 트랙 배경 */
+    border-radius: 4px;
+  }
+}
