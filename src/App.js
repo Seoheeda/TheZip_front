@@ -95,7 +95,7 @@ const App = () => {
             <ChatbotBody />
           </div>
         )}
-        <PopupBtn/>
+        <PopupBtn />
       </div>
     </>
   );

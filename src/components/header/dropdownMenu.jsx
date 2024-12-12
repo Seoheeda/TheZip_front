@@ -7,6 +7,7 @@ import {
   menuOpenState,
 } from "../../recoil/atoms";
 import { Link, useLocation } from "react-router-dom";
+import { SubmitLogout } from "../../api/auth";
 
 const DropdownMenu = () => {
   const setLoginPopupOpen = useSetRecoilState(loginPopupOpenState); // 로그인 팝업 상태
@@ -31,7 +32,7 @@ const DropdownMenu = () => {
   };
 
   const handleLogout = () => {
-    localStorage.setItem("accessToken", null);
+    SubmitLogout();
     setAccessToken(null);
   };
 

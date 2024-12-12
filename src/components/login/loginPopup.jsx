@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MotionFace from "./motionFace";
 import { KakaoLoginBtn, GoogleLoginBtn, UserSignupBtn, AgentSignupBtn, LoginBtn } from "../buttons";
 import { EmailInput, PasswordInput } from "./inputs";
@@ -15,6 +15,8 @@ const LoginPopup = ({ onClose }) => {
   const setAgentSignupPopupOpen = useSetRecoilState(agentSignupPopupOpenState);
   const setAccessToken = useSetRecoilState(accessTokenState);
 
+  const popupRef = useRef(null);
+  const [isOutsideClick, setIsOutsideClick] = useState(false);
   const [isPasswordFocus, setIsPasswordFocus] = useState(false);
   const [isEmailFocus, setIsEmailFocus] = useState(false);
   const [isEmailInput, setIsEmailInput] = useState(false);
@@ -22,6 +24,7 @@ const LoginPopup = ({ onClose }) => {
   const [password, setPassword] = useState("");
   const [emailCursorX, setEmailCursorX] = useState(0);
   const [isEmailRemembered, setIsEmailRemembered] = useState(false);
+
   useEffect(() => {
     const savedEmail = localStorage.getItem("savedEmail");
     if (savedEmail) {
@@ -42,6 +45,32 @@ const LoginPopup = ({ onClose }) => {
       window.removeEventListener("keydown", handleEnterKeyPress);
     };
   }, [email, password]);
+
+  useEffect(() => {
+    const handleMouseDown = (event) => {
+      // 클릭 시작 지점이 모달 외부인지 확인
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setIsOutsideClick(true);
+      } else {
+        setIsOutsideClick(false);
+      }
+    };
+
+    const handleMouseUp = () => {
+      // 클릭 시작 지점이 모달 외부였을 때만 onClose 실행
+      if (isOutsideClick) {
+        onClose();
+      }
+    };
+
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isOutsideClick, onClose]);
 
   const getEyeTransform = () => {
     if (isEmailFocus && isEmailInput) {
@@ -78,18 +107,10 @@ const LoginPopup = ({ onClose }) => {
     }
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      submitForm();
-    }
-  };
-
   return (
-    <div
-      className="w-full fixed inset-0 z-50 flex items-center justify-center bg-gray-1 bg-opacity-50"
-      onClick={onClose} // 모달 내부 클릭 시 닫히지 않음
-    >
+    <div className="w-full fixed inset-0 z-50 flex items-center justify-center bg-gray-1 bg-opacity-50">
       <div
+        ref={popupRef}
         className="flex flex-col bg-white p-8 rounded-md shadow-md w-96 "
         onClick={(e) => {
           e.stopPropagation(); // 이벤트 전파 중단

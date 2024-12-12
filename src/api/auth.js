@@ -19,7 +19,6 @@ export const checkNickname = async (nickname) => {
 };
 
 export const SubmitSignup = async (username, password, nickname, gender, role, profile) => {
-
   const formData = new FormData();
 
   const member = {
@@ -49,9 +48,12 @@ export const SubmitSignup = async (username, password, nickname, gender, role, p
 };
 
 export const SubmitLogin = async (username, password) => {
-
   try {
-    const response = await httpClient.post(`/login`, { username: username, password: password }, { withCredentials: true });
+    const response = await httpClient.post(
+      `/login`,
+      { username: username, password: password },
+      { withCredentials: true }
+    );
     const accessToken = response.headers["access"];
     return accessToken;
   } catch (error) {
@@ -60,21 +62,18 @@ export const SubmitLogin = async (username, password) => {
   }
 };
 
-export const SubmitLogout = async () => { 
+export const SubmitLogout = async () => {
   try {
     await httpClient.post(`/logout`, {}, { withCredentials: true });
     localStorage.removeItem("accessToken");
-    // localStorage.setItem("accessToken", null);
   } catch (error) {
     console.error("로그아웃 실패 :", error);
     throw error;
   }
-}
-
+};
 
 export const SubmitLoginWithCookie = async () => {
-
-  try{
+  try {
     const response = await httpClient.post(`/oauth2`, { withCredentials: true });
     localStorage.setItem("oauth2", false);
     const accessToken = response.headers["access"];
@@ -83,7 +82,6 @@ export const SubmitLoginWithCookie = async () => {
     // console.error("로그인 실패:", error);
     // throw new Error("로그인 요청에 실패했습니다. 다시 시도해 주세요.");
   }
-
 };
 
 export const getUserInfo = async (accessToken) => {
@@ -111,12 +109,12 @@ export const changePassword = async (password, accessToken) => {
   };
 
   formData.append("member", JSON.stringify(member));
-  
-  const data = await httpClient.put(`/members`,formData, {
+
+  const data = await httpClient.put(`/members`, formData, {
     headers: {
       access: `${accessToken}`,
-      'Content-Type': 'multipart/form-data',
-    }
+      "Content-Type": "multipart/form-data",
+    },
   });
 
   return data;
@@ -134,18 +132,16 @@ export const changeUserInfo = async (nickname, gender, imgFile, accessToken) => 
 
   formData.append("member", JSON.stringify(member));
 
-  
   if (imgFile) {
     formData.append("image", imgFile);
-  } 
-  
-  const data = await httpClient.put(`/members`,formData, {
+  }
+
+  const data = await httpClient.put(`/members`, formData, {
     headers: {
       access: `${accessToken}`,
-      'Content-Type': 'multipart/form-data',
-    }
+      "Content-Type": "multipart/form-data",
+    },
   });
 
   return data;
 };
-
