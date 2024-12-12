@@ -4,17 +4,6 @@ import { atom } from "recoil";
 export const accessTokenState = atom({
   key: "accessTokenState",
   default: localStorage.getItem("accessToken") || null,
-  effects_UNSTABLE: [
-    ({ onSet }) => {
-      onSet((newValue) => {
-        if (newValue) {
-          localStorage.setItem("accessToken", newValue);
-        } else {
-          localStorage.removeItem("accessToken");
-        }
-      });
-    },
-  ],
 });
 
 export const userState = atom({
@@ -98,4 +87,4 @@ export const paginatedCharterList = atom({
 export const isKakaoLogin = atom({
   key: "isKakaoLogin",
   default: false,
-})
+});

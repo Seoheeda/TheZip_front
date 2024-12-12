@@ -113,7 +113,7 @@ const Header = () => {
       </div>
       {!menuOpen && (
         <div className="flex items-center">
-          {accessToken !== null ? (
+          {accessToken ? (
             <div className="hidden xl:flex items-center relative">
               <Link to="/mypage">
                 <span className="relative group">
