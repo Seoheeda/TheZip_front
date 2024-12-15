@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRecoilState, useRecoilValue } from "recoil";
-import MainLogo from "./mainlogo";
+import MainLogo from "./mainlogo.tsx";
 import { LoginBtn, LogoutBtn } from "./buttons";
 import { menuOpenState, accessTokenState, userState } from "../../recoil/atoms";
 import { Link, useLocation } from "react-router-dom";
@@ -113,7 +113,7 @@ const Header = () => {
       </div>
       {!menuOpen && (
         <div className="flex items-center">
-          {accessToken ? (
+          {accessToken !== null ? (
             <div className="hidden xl:flex items-center relative">
               <Link to="/mypage">
                 <span className="relative group">
@@ -124,7 +124,7 @@ const Header = () => {
               <LogoutBtn />
             </div>
           ) : (
-            <div className="hidden lg:block">
+            <div className="hidden xl:block">
               <LoginBtn />
             </div>
           )}
