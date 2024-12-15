@@ -2,10 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import mainlogo from "../../assets/imgs/mainlogo.png";
 
-const MainLogo = () => {
+const MainLogo: React.FC = () => {
   const navigate = useNavigate();
 
-  const onClickLogo = () => {
+  const onClickLogo = (): void => {
     navigate(`/`);
   };
 

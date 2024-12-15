@@ -41,7 +41,7 @@ const DropdownMenu = () => {
   };
 
   return (
-    <div className="lg:flex absolute top-20 left-0 w-full bg-white shadow-md z-10">
+    <div className="xl:flex absolute top-20 left-0 w-full bg-white shadow-md z-10">
       {accessToken && (
         <Link to="/mypage">
           <div className="p-2 cursor-pointer border-b hover:text-primary-1">
