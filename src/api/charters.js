@@ -7,8 +7,8 @@ export const searchByDongcode = async (dongcode, start, limit) => {
     );
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
-    throw error; // 에러 핸들링을 위해 다시 throw
+    console.error("searchByDongcode 에러 발생:", error);
+    throw error;
   }
 };
 
@@ -20,8 +20,8 @@ export const searchByDongcodeYearlyMonthly = async (dongcode, start, limit, char
     );
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
-    throw error; // 에러 핸들링을 위해 다시 throw
+    console.error("searchByDongcodeYearlyMonthly 에러 발생:", error);
+    throw error;
   }
 };
 
@@ -32,7 +32,7 @@ export const searchByCostYearly = async (dongcode, start, limit, min, max) => {
     );
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchByCostYearly 에러 발생:", error);
     throw error;
   }
 };
@@ -44,7 +44,7 @@ export const searchByCostMonthly = async (dongcode, start, limit, min, max, minR
     );
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchByCostMonthly 에러 발생:", error);
     throw error;
   }
 };
@@ -54,7 +54,7 @@ export const searchByName = async (name) => {
     const data = await httpClient.get(`/charters/name/${name}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchByName 에러 발생:", error);
     throw error;
   }
 };
@@ -64,7 +64,7 @@ export const countCharters = async (dongcode) => {
     const data = await httpClient.get(`/charters/count?dongCode=${dongcode}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("countCharters 에러 발생:", error);
     throw error;
   }
 };
@@ -76,8 +76,8 @@ export const countChartersByDongcodeYearlyMonthly = async (dongcode, charterKind
     );
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
-    throw error; // 에러 핸들링을 위해 다시 throw
+    console.error("countChartersByDongcodeYearlyMonthly 에러 발생:", error);
+    throw error;
   }
 };
 
@@ -88,8 +88,8 @@ export const countChartersByCostYearly = async (dongcode, min, max) => {
     );
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
-    throw error; // 에러 핸들링을 위해 다시 throw
+    console.error("countChartersByCostYearly 에러 발생:", error);
+    throw error;
   }
 };
 
@@ -100,8 +100,8 @@ export const countChartersByCostMonthly = async (dongcode, min, max, minR, maxR)
     );
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
-    throw error; // 에러 핸들링을 위해 다시 throw
+    console.error("countChartersByCostMonthly 에러 발생:", error);
+    throw error;
   }
 };
 
@@ -110,7 +110,7 @@ export const getCharterDetail = async (charterId) => {
     const data = await httpClient.get(`/charters/charter-id/${charterId}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("getCharterDetail 에러 발생:", error);
     throw error;
   }
 };
@@ -125,7 +125,7 @@ export const fetchLikeCharter = async (params) => {
     });
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("fetchLikeCharter 에러 발생:", error);
     alert("로그인 시 이용 가능한 서비스입니다.");
     throw error;
   }
@@ -133,14 +133,10 @@ export const fetchLikeCharter = async (params) => {
 
 export const likeCharter = async (charterId) => {
   try {
-    const data = await httpClient.post(
-      "/interest-charter",
-      { charterId }, // 요청 본문
-      { headers: { "Content-Type": "application/json" } } // JSON 요청 설정
-    );
+    const data = await httpClient.post("/interest-charter", { charterId });
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("likeCharter 에러 발생:", error);
     throw error;
   }
 };
@@ -150,19 +146,17 @@ export const unLikeCharter = async (charterId) => {
     const data = await httpClient.delete(`/interest-charter/${charterId}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("unLikeCharter 에러 발생:", error);
     throw error;
   }
 };
 
 export const fetchTopNCharter = async (charterKind, count) => {
   try {
-    const data = await httpClient.get(`/charters/likes?charterKind=${charterKind}&count=${count}`, {
-      headers: { "Content-Type": "application/json" },
-    });
+    const data = await httpClient.get(`/charters/likes?charterKind=${charterKind}&count=${count}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("fetchTopNCharter 에러 발생:", error);
     throw error;
   }
 };

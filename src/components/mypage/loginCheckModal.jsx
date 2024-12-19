@@ -1,5 +1,5 @@
 import React from "react";
-import { SubmitLogin } from "../../api/auth";
+import { SubmitLogin } from "../../api/auth.ts";
 
 const LoginCheckModal = ({
   isOpen,

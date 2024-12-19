@@ -8,7 +8,7 @@ import {
   agentSignupPopupOpenState,
   accessTokenState,
 } from "../../recoil/atoms";
-import { SubmitLogin } from "../../api/auth";
+import { SubmitLogin } from "../../api/auth.ts";
 
 const LoginPopup = ({ onClose }) => {
   const setUserSignupPopupOpen = useSetRecoilState(userSignupPopupOpenState);
