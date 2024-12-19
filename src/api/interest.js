@@ -13,13 +13,7 @@ export const getInterestArea = async () => {
 
 export const addInterestArea = async (dongcode) => {
   try {
-    const data = await httpClient.post(
-      "/interest-area",
-      { dongCode: dongcode }, // 요청 본문
-      {
-        headers: { "Content-Type": "application/json" }, // JSON으로 Content-Type 설정
-      }
-    );
+    const data = await httpClient.post("/interest-area", { dongCode: dongcode });
     return data;
   } catch (error) {
     console.error("관심 지역 추가 실패:", error);

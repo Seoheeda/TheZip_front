@@ -5,7 +5,7 @@ export const getAreaList = async (sido, gugun, dong) => {
     const data = await httpClient.get(`/dongcodes?sido=${sido}&gugun=${gugun}&dong=${dong}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("getAreaList 에러 발생:", error);
     throw error;
   }
 };
@@ -15,7 +15,7 @@ export const getAreaName = async (dongCode) => {
     const data = await httpClient.get(`/dongcodes/${dongCode}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("getAreaName 에러 발생:", error);
     throw error;
   }
 };
@@ -23,10 +23,9 @@ export const getAreaName = async (dongCode) => {
 export const searchByDongcode = async (dongcode) => {
   try {
     const data = await httpClient.get(`/houseinfos?dongcode=${dongcode}`);
-    console.log("검색한 동코드", dongcode);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchByDongcode 에러 발생:", error);
     throw error;
   }
 };
@@ -36,7 +35,7 @@ export const searchByCost = async (dongcode, min, max) => {
     const data = await httpClient.get(`/houseinfos?dongcode=${dongcode}&min=${min}&max=${max}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchByCost 에러 발생:", error);
     throw error;
   }
 };
@@ -44,10 +43,9 @@ export const searchByCost = async (dongcode, min, max) => {
 export const searchLocByDongcode = async (dongcode) => {
   try {
     const data = await httpClient.get(`/houseinfos/location?dongcode=${dongcode}`);
-    console.log("검색한 동코드", dongcode);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchLocByDongcode 에러 발생:", error);
     throw error;
   }
 };
@@ -57,21 +55,19 @@ export const searchLocByCost = async (dongcode, min, max) => {
     const data = await httpClient.get(
       `/houseinfos/location?dongcode=${dongcode}&min=${min}&max=${max}`
     );
-    console.log("검색한 동코드", dongcode);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchLocByCost 에러 발생:", error);
     throw error;
   }
 };
 
 export const searchByName = async (name) => {
   try {
-    console.log("검색한 이름", name);
     const data = await httpClient.get(`/houseinfos/name/${name}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("searchByName 에러 발생:", error);
     throw error;
   }
 };
@@ -81,7 +77,7 @@ export const getAptDetail = async (aptSeq) => {
     const data = await httpClient.get(`/houseinfos/details/${aptSeq}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("getAptDetail 에러 발생:", error);
     throw error;
   }
 };
@@ -93,7 +89,7 @@ export const fetchLikeHouse = async () => {
     });
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("fetchLikeHouse 에러 발생:", error);
     alert("로그인 시 이용 가능한 서비스입니다.");
     throw error;
   }
@@ -101,16 +97,10 @@ export const fetchLikeHouse = async () => {
 
 export const likeHouse = async (aptSeq) => {
   try {
-    const data = await httpClient.post(
-      "/interest-house",
-      { aptSeq }, // 요청 본문
-      {
-        headers: { "Content-Type": "application/json" }, // JSON으로 Content-Type 설정
-      }
-    );
+    const data = await httpClient.post("/interest-house", { aptSeq });
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("likeHouse 에러 발생:", error);
     alert("로그인 시 이용 가능한 서비스입니다.");
     throw error;
   }
@@ -121,7 +111,7 @@ export const unLikeHouse = async (aptSeq) => {
     const data = await httpClient.delete(`/interest-house/${aptSeq}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("unLikeHouse 에러 발생:", error);
     alert("로그인 시 이용 가능한 서비스입니다.");
     throw error;
   }
@@ -129,24 +119,20 @@ export const unLikeHouse = async (aptSeq) => {
 
 export const fetchTopNApt = async (count) => {
   try {
-    const data = await httpClient.get(`/houseinfos/likes/${count}`, {
-      headers: { "Content-Type": "application/json" },
-    });
+    const data = await httpClient.get(`/houseinfos/likes/${count}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("fetchTopNApt 에러 발생:", error);
     throw error;
   }
 };
 
 export const fetchImg = async (imageUrl, imageType) => {
   try {
-    const data = await httpClient.get(`/images?imageUrl=${imageUrl}&imageType=${imageType}`, {
-      headers: { "Content-Type": "application/json" },
-    });
+    const data = await httpClient.get(`/images?imageUrl=${imageUrl}&imageType=${imageType}`);
     return data;
   } catch (error) {
-    console.error("에러 발생:", error);
+    console.error("fetchImg 에러 발생:", error);
     throw error;
   }
 };

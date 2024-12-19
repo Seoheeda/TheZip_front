@@ -1,4 +1,4 @@
-import { SubmitLoginWithCookie } from "../../api/auth";
+import { SubmitKakaoLogin } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { accessTokenState, isKakaoLogin } from "../../recoil/atoms";
@@ -12,7 +12,7 @@ const Oauth2 = () => {
   const GetHeader = async () => {
     console.log("GetHeader");
 
-    const response = await SubmitLoginWithCookie(setKakaoLogin);
+    const response = await SubmitKakaoLogin(setKakaoLogin);
 
     localStorage.setItem("accessToken", response);
     setAccessToken(response);

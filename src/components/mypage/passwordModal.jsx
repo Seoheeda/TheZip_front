@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PasswordInput, PasswordCheckInput } from "../../components/signup/inputs";
-import { changePassword } from "../../api/auth";
+import { changePassword } from "../../api/auth.ts";
 
 const PasswordChangeModal = ({ isOpen, onClose, password, setPassword, setIsPasswordChecked }) => {
   const [newPassword, setNewPassword] = useState("");

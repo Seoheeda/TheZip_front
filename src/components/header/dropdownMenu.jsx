@@ -7,7 +7,7 @@ import {
   menuOpenState,
 } from "../../recoil/atoms";
 import { Link, useLocation } from "react-router-dom";
-import { SubmitLogout } from "../../api/auth";
+import { SubmitLogout } from "../../api/auth.ts";
 
 const DropdownMenu = () => {
   const setLoginPopupOpen = useSetRecoilState(loginPopupOpenState); // 로그인 팝업 상태

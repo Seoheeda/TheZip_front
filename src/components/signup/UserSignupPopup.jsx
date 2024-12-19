@@ -9,7 +9,7 @@ import {
 } from "../signup/inputs";
 import { KakaoLoginBtn, GoogleLoginBtn, SignupBtn } from "../buttons";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { SubmitSignup } from "../../api/auth";
+import { SubmitSignup } from "../../api/auth.ts";
 import { useRecoilState } from "recoil";
 import { loginPopupOpenState, userSignupPopupOpenState } from "../../recoil/atoms";
 

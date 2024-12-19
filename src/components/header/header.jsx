@@ -5,7 +5,7 @@ import MainLogo from "./mainlogo.tsx";
 import { LoginBtn, LogoutBtn } from "./buttons";
 import { menuOpenState, accessTokenState, userState } from "../../recoil/atoms";
 import { Link, useLocation } from "react-router-dom";
-import { getUserInfo } from "../../api/auth";
+import { getUserInfo } from "../../api/auth.ts";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useRecoilState(menuOpenState); // 메뉴 열림 상태

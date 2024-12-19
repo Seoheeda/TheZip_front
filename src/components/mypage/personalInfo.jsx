@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PasswordChangeModal from "./passwordModal";
 import LoginCheckModal from "./loginCheckModal";
-import { getUserInfo, changeUserInfo } from "../../api/auth";
+import { getUserInfo, changeUserInfo } from "../../api/auth.ts";
 import { ImageInput, NicknameInput, GenderInput } from "../../components/signup/inputs";
 
 const PersonalInfo = () => {

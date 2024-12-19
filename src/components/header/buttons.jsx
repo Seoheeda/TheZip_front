@@ -1,7 +1,7 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import { loginPopupOpenState, accessTokenState } from "../../recoil/atoms";
-import { SubmitLogout } from "../../api/auth";
+import { SubmitLogout } from "../../api/auth.ts";
 
 export const LoginBtn = () => {
   const setLoginPopupOpen = useSetRecoilState(loginPopupOpenState); // 로그인 팝업 상태

@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { BsPersonFill } from "react-icons/bs";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa";
-import { checkEmail, checkNickname } from "../../api/auth";
+import { checkEmail, checkNickname } from "../../api/auth.ts";
 import { emailRegexCheck, passwordRegexCheck } from "../../utils/methods";
 import {
   EMAIL_MENT,
