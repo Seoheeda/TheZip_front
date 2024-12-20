@@ -43,7 +43,6 @@ export const CharterImageLoader = ({ imageURLs, alt, rounded }) => {
   useEffect(() => {
     const loadImage = async () => {
       try {
-        console.log("Image URLs:", imageURLs);
         if (!imageURLs) {
           setImageSrc(apt);
         }

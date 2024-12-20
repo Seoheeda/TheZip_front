@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { BsPersonFill } from "react-icons/bs";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa";
 import { checkEmail, checkNickname } from "../../api/auth.ts";
@@ -13,22 +12,21 @@ import {
 } from "../../utils/enum";
 import basicProfile from "../../assets/imgs/basicProfile.jpg";
 
-export const EmailInput = ({ email, setEmail }) => {
+export const EmailInput = ({ setEmail }) => {
   const [emailCheck, setEmailCheck] = useState(0);
   const [isFocused, setIsFocused] = useState(false);
 
   const submitForm = async (emailValue) => {
     try {
-      const response = await checkEmail(emailValue);
+      const data = await checkEmail(emailValue);
       // 이메일이 형식에 맞지만, 사용 불가한 경우
-      if (response.data === true) {
+      if (data === true) {
         setEmailCheck(2);
         // 이메일이 형식에 맞고, 사용 가능한 경우
       } else {
         setEmailCheck(3);
         setEmail(emailValue);
       }
-      console.log(response.data);
     } catch (error) {
       console.log("이메일 확인에 실패했습니다.");
       console.log(error);
@@ -152,9 +150,9 @@ export const NicknameInput = ({ nickname, setNickname }) => {
 
   const submitForm = async (nicknameValue) => {
     try {
-      const response = await checkNickname(nicknameValue);
+      const data = await checkNickname(nicknameValue);
       // 사용 불가한 경우
-      if (response.data === true) {
+      if (data === true) {
         setNicknameCheck(2);
         // 사용 가능한 경우
       } else {

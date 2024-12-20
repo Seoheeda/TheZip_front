@@ -10,12 +10,12 @@ import {
 import { KakaoLoginBtn, GoogleLoginBtn, SignupBtn } from "../buttons";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { SubmitSignup } from "../../api/auth.ts";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { loginPopupOpenState, agentSignupPopupOpenState } from "../../recoil/atoms";
 
 const AgentSignupPopup = ({ onClose }) => {
-  const [agentSignupPopupOpen, setAgentSignupPopupOpen] = useRecoilState(agentSignupPopupOpenState);
-  const [loginPopupOpen, setLoginPopupOpen] = useRecoilState(loginPopupOpenState);
+  const setAgentSignupPopupOpen = useSetRecoilState(agentSignupPopupOpenState);
+  const setLoginPopupOpen = useSetRecoilState(loginPopupOpenState);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -77,10 +77,3 @@ const AgentSignupPopup = ({ onClose }) => {
 };
 
 export default AgentSignupPopup;
-
-// private String email;
-// private String password;
-// private String nickname;
-// private String gender;
-// private Role role;
-// private Image profile;

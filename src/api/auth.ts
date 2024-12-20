@@ -1,26 +1,25 @@
 import { httpClient } from "./http";
 import basicProfile from "../assets/imgs/basicProfile.jpg";
 
-export const checkEmail = async (username: string) => {
+export const checkEmail = async (username: string): Promise<boolean> => {
   try {
-    const data = await httpClient.post(`/members/check-email`, {
+    const response = await httpClient.post(`/members/check-email`, {
       username: username,
     });
-    console.log(data)
-    return data;
+    return response.data;
   } catch (error) {
     console.error("이메일 중복확인 실패:", error);
     throw error;
   }
 };
 
-export const checkNickname = async (nickname: string) => {
+export const checkNickname = async (nickname: string): Promise<boolean> => {
   try {
-    const data = await httpClient.post(`/members/check-nickname`, {
+    const response = await httpClient.post(`/members/check-nickname`, {
       nickName: nickname,
     });
 
-    return data;
+    return response.data;
   } catch (error) {
     console.error("닉네임 중복확인 실패:", error);
     throw error;

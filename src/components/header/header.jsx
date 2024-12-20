@@ -30,7 +30,6 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log("dfdfdfdfdf", accessToken);
     const fetchUserInfo = async () => {
       if (accessToken !== null) {
         try {
