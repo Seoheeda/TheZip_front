@@ -227,7 +227,7 @@ export const GenderInput = ({ gender, setGender }) => {
   );
 };
 
-export const ImageInput = ({ imgFile, setImgFile, isMypage }) => {
+export const ImageInput = ({ setImgFile, isMypage = false }) => {
   const imgRef = useRef(null);
   const [previewImg, setPreviewImg] = useState(null);
 

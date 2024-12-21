@@ -26,8 +26,8 @@ import Mypage from "./pages/mypage";
 import ErrorPage from "./pages/errorPage";
 
 import LoginPopup from "./components/login/loginPopup";
-import UserSignupPopup from "./components/signup/UserSignupPopup";
-import AgentSignupPopup from "./components/signup/AgentSignupPopup";
+import UserSignupPopup from "./components/signup/UserSignupPopup.tsx";
+import AgentSignupPopup from "./components/signup/AgentSignupPopup.tsx";
 import ChatbotBody from "./components/chatbot/chatbotBody";
 import PopupBtn from "./components/chatbot/popupBtn";
 import DropdownMenu from "./components/header/dropdownMenu";

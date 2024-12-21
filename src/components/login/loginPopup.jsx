@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import MotionFace from "./motionFace";
+import PopupLayout from "../PopupLayout.tsx";
 import { KakaoLoginBtn, GoogleLoginBtn, UserSignupBtn, AgentSignupBtn, LoginBtn } from "../buttons";
 import { EmailInput, PasswordInput } from "./inputs";
 import { useSetRecoilState } from "recoil";
@@ -15,8 +16,6 @@ const LoginPopup = ({ onClose }) => {
   const setAgentSignupPopupOpen = useSetRecoilState(agentSignupPopupOpenState);
   const setAccessToken = useSetRecoilState(accessTokenState);
 
-  const popupRef = useRef(null);
-  const [isOutsideClick, setIsOutsideClick] = useState(false);
   const [isPasswordFocus, setIsPasswordFocus] = useState(false);
   const [isEmailFocus, setIsEmailFocus] = useState(false);
   const [isEmailInput, setIsEmailInput] = useState(false);
@@ -45,32 +44,6 @@ const LoginPopup = ({ onClose }) => {
       window.removeEventListener("keydown", handleEnterKeyPress);
     };
   }, [email, password]);
-
-  useEffect(() => {
-    const handleMouseDown = (event) => {
-      // 클릭 시작 지점이 모달 외부인지 확인
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        setIsOutsideClick(true);
-      } else {
-        setIsOutsideClick(false);
-      }
-    };
-
-    const handleMouseUp = () => {
-      // 클릭 시작 지점이 모달 외부였을 때만 onClose 실행
-      if (isOutsideClick) {
-        onClose();
-      }
-    };
-
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
-
-    return () => {
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [isOutsideClick, onClose]);
 
   const getEyeTransform = () => {
     if (isEmailFocus && isEmailInput) {
@@ -108,62 +81,49 @@ const LoginPopup = ({ onClose }) => {
   };
 
   return (
-    <div className="w-full fixed inset-0 z-50 flex items-center justify-center bg-gray-1 bg-opacity-50">
-      <div
-        ref={popupRef}
-        className="flex flex-col bg-white p-8 rounded-md shadow-md w-96 "
-        onClick={(e) => {
-          e.stopPropagation(); // 이벤트 전파 중단
-        }}
-      >
-        <div className="text-xl self-center mb-2">로그인</div>
-        <div className="self-center mb-4">
-          <MotionFace
-            isPasswordFocus={isPasswordFocus}
-            getEyeTransform={getEyeTransform}
-            setEmailCursorX={setEmailCursorX}
+    <PopupLayout onClose={onClose}>
+      <div className="text-xl self-center mb-2">로그인</div>
+      <MotionFace
+        isPasswordFocus={isPasswordFocus}
+        getEyeTransform={getEyeTransform}
+        setEmailCursorX={setEmailCursorX}
+      />
+      <EmailInput
+        setIsEmailFocus={setIsEmailFocus}
+        setIsPasswordFocus={setIsPasswordFocus}
+        setIsEmailInput={setIsEmailInput}
+        setEmailCursorX={setEmailCursorX}
+        setEmail={setEmail}
+        email={email}
+      />
+      <PasswordInput
+        setIsPasswordFocus={setIsPasswordFocus}
+        setIsEmailFocus={setIsEmailFocus}
+        setPassword={setPassword}
+      />
+      <div className="flex justify-between my-2 flex-col xs:flex-row">
+        <div className="flex">
+          <input
+            type="checkbox"
+            className="w-3"
+            checked={isEmailRemembered}
+            onChange={() => setIsEmailRemembered(!isEmailRemembered)}
           />
+          <span className="mx-2 text-sm">이메일 기억하기</span>
         </div>
-        <div className="flex flex-col py-2 border-b">
-          <EmailInput
-            setIsEmailFocus={setIsEmailFocus}
-            setIsPasswordFocus={setIsPasswordFocus}
-            setIsEmailInput={setIsEmailInput}
-            setEmailCursorX={setEmailCursorX}
-            setEmail={setEmail}
-            email={email}
-          />
-          <PasswordInput
-            setIsPasswordFocus={setIsPasswordFocus}
-            setIsEmailFocus={setIsEmailFocus}
-            setPassword={setPassword}
-          />
-          <div className="flex justify-between my-2 flex-col xs:flex-row">
-            <div className="flex">
-              <input
-                type="checkbox"
-                className="w-3"
-                checked={isEmailRemembered}
-                onChange={() => setIsEmailRemembered(!isEmailRemembered)}
-              />
-              <span className="mx-2 text-sm">이메일 기억하기</span>
-            </div>
-            <div className="text-sm underline cursor-pointer active:text-primary-1">
-              이메일/비밀번호 찾기
-            </div>
-          </div>
-          <LoginBtn onClick={submitForm} />
-          <div className="flex justify-evenly space-x-2">
-            <UserSignupBtn openUserSignupPopup={() => setUserSignupPopupOpen(true)} />
-            <AgentSignupBtn openAgentSignupPopup={() => setAgentSignupPopupOpen(true)} />
-          </div>
-        </div>
-        <div className="flex flex-col my-4 space-y-2">
-          <KakaoLoginBtn />
-          <GoogleLoginBtn />
+        <div className="text-sm underline cursor-pointer active:text-primary-1">
+          이메일/비밀번호 찾기
         </div>
       </div>
-    </div>
+      <LoginBtn onClick={submitForm} />
+      <div className="flex justify-evenly space-x-2">
+        <UserSignupBtn openUserSignupPopup={() => setUserSignupPopupOpen(true)} />
+        <AgentSignupBtn openAgentSignupPopup={() => setAgentSignupPopupOpen(true)} />
+      </div>
+      <div className="border-b border-gray-2 my-2" />
+      <KakaoLoginBtn />
+      <GoogleLoginBtn />
+    </PopupLayout>
   );
 };
 

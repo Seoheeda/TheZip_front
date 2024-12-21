@@ -26,7 +26,7 @@ export const checkNickname = async (nickname: string): Promise<boolean> => {
   }
 };
 
-export const SubmitSignup = async (username: string, password: string, nickname: string, gender: string, role: string, profile: string) => {
+export const SubmitSignup = async (username: string, password: string, nickname: string, gender: string, role: string, profile: File | null): Promise<void> => {
   try {
     const formData = new FormData();
 
@@ -52,8 +52,7 @@ export const SubmitSignup = async (username: string, password: string, nickname:
     }
 
     const data = await httpClient.post(`/members`, formData);
-
-    return data;
+    console.log(data)
   } catch (error) {
     console.error("회원가입 실패:", error);
     throw error;
