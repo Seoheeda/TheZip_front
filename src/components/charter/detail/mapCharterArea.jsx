@@ -22,7 +22,7 @@ const MapAptArea = () => {
 
       const rectangleBounds = new naver.maps.LatLngBounds(
         new naver.maps.LatLng(latitude - 0.0002, longitude - 0.0002),
-        new naver.maps.LatLng(latitude + 0.0002, longitude + 0.0002)
+        new naver.maps.LatLng(latitude + 0.0002, longitude + 0.0002),
       );
 
       new naver.maps.Rectangle({

@@ -13,7 +13,10 @@ const PopupLayout: FC<PopupLayoutProps> = ({ onClose, children }) => {
   useEffect(() => {
     const handleMouseDown = (event: MouseEvent) => {
       // 팝업 내부를 클릭했는지, 외부를 클릭했는지 판별
-      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
         setIsOutsideClick(true);
       } else {
         setIsOutsideClick(false);

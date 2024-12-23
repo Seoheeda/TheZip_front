@@ -5,7 +5,12 @@ import { CharterImageLoader } from "../../utils/imageLoader";
 import Skeleton from "react-loading-skeleton"; // Skeleton 라이브러리 추가
 import "react-loading-skeleton/dist/skeleton.css"; // Skeleton 스타일 추가
 
-const HouseList = ({ option, setDropdownViewHouse, dropdownRef, SetCharterId }) => {
+const HouseList = ({
+  option,
+  setDropdownViewHouse,
+  dropdownRef,
+  SetCharterId,
+}) => {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
@@ -79,7 +84,11 @@ const HouseList = ({ option, setDropdownViewHouse, dropdownRef, SetCharterId }) 
                 }}
               >
                 <div className="w-1/3 h-24">
-                  <CharterImageLoader imageURLs={option.image} alt={option.title} rounded={true} />
+                  <CharterImageLoader
+                    imageURLs={option.image}
+                    alt={option.title}
+                    rounded={true}
+                  />
                 </div>
                 <div className="w-2/3 pl-4 flex flex-col justify-between">
                   <h3 className="text-lg font-semibold text-gray-800 truncate mb-1">
@@ -87,7 +96,8 @@ const HouseList = ({ option, setDropdownViewHouse, dropdownRef, SetCharterId }) 
                     {option.charterDong} {option.name.replace(/^\(|\)$/g, "")}
                   </h3>
                   <div className="text-gray-600 text-sm truncate mb-2">
-                    {option.buildingUse} {option.size}㎡ ({Math.round(formatToPeung(option.size))}
+                    {option.buildingUse} {option.size}㎡ (
+                    {Math.round(formatToPeung(option.size))}
                     평)
                   </div>
                   <div className="text-md text-primary-1">

@@ -23,7 +23,9 @@ const BoardPostPage = () => {
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 py-10">
       <div className="max-w-4xl w-full max-h-xl bg-white rounded-lg shadow-xl p-8 space-y-6">
-        <h1 className="text-2xl font-semibold mb-6 text-gray-900 text-center">📄 글쓰기</h1>
+        <h1 className="text-2xl font-semibold mb-6 text-gray-900 text-center">
+          📄 글쓰기
+        </h1>
         <form className="flex flex-col space-y-6" onSubmit={submitPost}>
           <input
             type="text"

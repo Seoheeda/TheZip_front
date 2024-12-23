@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAreaName, getAptDetail, likeHouse, unLikeHouse } from "../../../api/houseInfo";
+import {
+  getAreaName,
+  getAptDetail,
+  likeHouse,
+  unLikeHouse,
+} from "../../../api/houseInfo";
 import { MdOutlinePlace } from "react-icons/md";
 import { LuBuilding } from "react-icons/lu";
 import { SlPicture } from "react-icons/sl";
@@ -111,7 +116,8 @@ const AptInfo = () => {
         <div className="flex justify-between w-full">
           <div className="flex space-x-2 items-center">
             <div>
-              {searchedSido} {searchedGugun} {aptDetail.dongName} {aptDetail.jibun}
+              {searchedSido} {searchedGugun} {aptDetail.dongName}{" "}
+              {aptDetail.jibun}
             </div>
             <div className="cursor-pointer">
               {aptDetail.isInterested ? (
@@ -139,12 +145,16 @@ const AptInfo = () => {
               )}
             </div>
           </div>
-          <SlPicture className="text-2xl text-gray-1 cursor-pointer" onClick={openModal} />
+          <SlPicture
+            className="text-2xl text-gray-1 cursor-pointer"
+            onClick={openModal}
+          />
         </div>
         <div className="flex items-center">
           <MdOutlinePlace className="mr-1 text-primary-1" />
           <div className="text-sm">
-            {searchedSido} {searchedDong} {aptDetail.roadName} {aptDetail.roadNameBonbun}{" "}
+            {searchedSido} {searchedDong} {aptDetail.roadName}{" "}
+            {aptDetail.roadNameBonbun}{" "}
             {aptDetail.roadNameBubun !== "0" && aptDetail.roadNameBubun}
           </div>
         </div>
@@ -153,7 +163,11 @@ const AptInfo = () => {
           {aptDetail.apartName} ({aptDetail.buildYear})
         </div>
       </div>
-      <AptImgModal isOpen={showModal} onClose={closeModal} content={aptDetail.imageURLs} />
+      <AptImgModal
+        isOpen={showModal}
+        onClose={closeModal}
+        content={aptDetail.imageURLs}
+      />
     </div>
   );
 };

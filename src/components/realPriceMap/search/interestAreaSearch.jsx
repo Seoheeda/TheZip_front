@@ -61,7 +61,9 @@ const InterestAreaSearch = () => {
           onClick={() => setDropdownView(!dropdownView)}
         >
           {localStorage.getItem("accessToken") !== null ? (
-            <span className="text-gray-1">{selectedArea ? selectedArea : "관심지역 선택"}</span>
+            <span className="text-gray-1">
+              {selectedArea ? selectedArea : "관심지역 선택"}
+            </span>
           ) : (
             <span className="text-gray-1">로그인 후 사용 가능합니다.</span>
           )}
@@ -84,7 +86,9 @@ const InterestAreaSearch = () => {
                 </li>
               ))
             ) : (
-              <li className="px-4 py-2 text-sm text-gray-500 z-0">등록된 관심지역이 없습니다</li>
+              <li className="px-4 py-2 text-sm text-gray-500 z-0">
+                등록된 관심지역이 없습니다
+              </li>
             )}
           </ul>
         )}

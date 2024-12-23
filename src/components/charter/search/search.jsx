@@ -4,7 +4,13 @@ import AreaDropdown from "./areaDropdown";
 import InterestAreaSearch from "./interestAreaSearch";
 import PopularCharter from "./popularCharter";
 
-const Search = ({ searched, searchTerm, setSearchTerm, charterList, favoriteAreas }) => {
+const Search = ({
+  searched,
+  searchTerm,
+  setSearchTerm,
+  charterList,
+  favoriteAreas,
+}) => {
   return (
     <div className="flex flex-col w-96 rounded-sm shadow-lg top-5 left-1 sm:left-10  absolute z-10">
       <div className="bg-white mb-10">

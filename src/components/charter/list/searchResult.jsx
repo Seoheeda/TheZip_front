@@ -16,7 +16,11 @@ import {
   countChartersByCostMonthly,
 } from "../../../api/charters";
 import Pagination from "./pagination";
-import { formatToEokCheon, formatToPeung, formatFloor } from "../../../utils/methods";
+import {
+  formatToEokCheon,
+  formatToPeung,
+  formatFloor,
+} from "../../../utils/methods";
 import { CharterImageLoader } from "../../../utils/imageLoader";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -66,7 +70,7 @@ const SearchResult = () => {
         dongcode,
         start,
         itemsPerPage,
-        charterKind
+        charterKind,
       );
       setCharterList(response.data);
       console.log(response.data);
@@ -82,7 +86,13 @@ const SearchResult = () => {
     try {
       setLoading(true); // 로딩 시작
       const start = (page - 1) * itemsPerPage;
-      const response = await searchByCostYearly(dongcode, start, itemsPerPage, min, max);
+      const response = await searchByCostYearly(
+        dongcode,
+        start,
+        itemsPerPage,
+        min,
+        max,
+      );
       setCharterList(response.data);
       console.log(response.data);
     } catch (error) {
@@ -93,7 +103,14 @@ const SearchResult = () => {
     }
   };
 
-  const searchAptMonthlyByCost = async (dongcode, page, min, max, minR, maxR) => {
+  const searchAptMonthlyByCost = async (
+    dongcode,
+    page,
+    min,
+    max,
+    minR,
+    maxR,
+  ) => {
     try {
       setLoading(true); // 로딩 시작
       const start = (page - 1) * itemsPerPage;
@@ -104,7 +121,7 @@ const SearchResult = () => {
         min,
         max,
         minR,
-        maxR
+        maxR,
       );
       setCharterList(response.data);
       console.log(response.data);
@@ -134,7 +151,10 @@ const SearchResult = () => {
   const getCountByDongcodeYearlyMonthly = async (dongcode, charterKind) => {
     try {
       setLoading(true); // 로딩 시작
-      const response = await countChartersByDongcodeYearlyMonthly(dongcode, charterKind);
+      const response = await countChartersByDongcodeYearlyMonthly(
+        dongcode,
+        charterKind,
+      );
       setTotalPages(Math.ceil(response.data / itemsPerPage));
       setTotalCnt(response.data);
     } catch (error) {
@@ -162,7 +182,13 @@ const SearchResult = () => {
   const getCountByCostMonthly = async (dongcode, min, max, minR, maxR) => {
     try {
       setLoading(true); // 로딩 시작
-      const response = await countChartersByCostMonthly(dongcode, min, max, minR, maxR);
+      const response = await countChartersByCostMonthly(
+        dongcode,
+        min,
+        max,
+        minR,
+        maxR,
+      );
       setTotalPages(Math.ceil(response.data / itemsPerPage));
     } catch (error) {
       alert("데이터 개수 조회에 실패했습니다.");
@@ -184,7 +210,14 @@ const SearchResult = () => {
       searchAptYearlyByCost(dongCode, currentPage, depositMin, depositMax);
       getCountByCostYearly(dongCode, depositMin, depositMax);
     } else if (!charterKind) {
-      searchAptMonthlyByCost(dongCode, currentPage, depositMin, depositMax, rentMin, rentMax);
+      searchAptMonthlyByCost(
+        dongCode,
+        currentPage,
+        depositMin,
+        depositMax,
+        rentMin,
+        rentMax,
+      );
       getCountByCostMonthly(dongCode, depositMin, depositMax, rentMin, rentMax);
     }
   }, [dongCode, currentPage, charterKind]);
@@ -225,11 +258,14 @@ const SearchResult = () => {
     }
   };
 
-  const startPage = useMemo(() => (currentGroup - 1) * pagesPerGroup + 1, [currentGroup]);
+  const startPage = useMemo(
+    () => (currentGroup - 1) * pagesPerGroup + 1,
+    [currentGroup],
+  );
 
   const endPage = useMemo(
     () => Math.min(currentGroup * pagesPerGroup, totalPages),
-    [currentGroup, totalPages]
+    [currentGroup, totalPages],
   );
 
   const handlePageChange = (newPage) => {
@@ -304,7 +340,9 @@ const SearchResult = () => {
           <div className="flex space-x-3 xl:space-x-5 text-sm xl:text-md">
             <div
               className={`cursor-pointer ${
-                charterKind !== "전세" && charterKind !== "월세" ? "text-primary-1" : ""
+                charterKind !== "전세" && charterKind !== "월세"
+                  ? "text-primary-1"
+                  : ""
               }`}
               onClick={() => {
                 if (!location.pathname.startsWith("/charters/college")) {
@@ -398,7 +436,8 @@ const SearchResult = () => {
                   )}
                 </div>
                 <div className="text-sm">
-                  {charterItem.charterDong} {charterItem.bonbun}-{charterItem.bubun}
+                  {charterItem.charterDong} {charterItem.bonbun}-
+                  {charterItem.bubun}
                 </div>
                 <div className="flex space-x-3 text-sm">
                   <div>{formatFloor(charterItem.floor)}</div>

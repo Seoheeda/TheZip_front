@@ -13,7 +13,9 @@ export const getInterestArea = async () => {
 
 export const addInterestArea = async (dongcode) => {
   try {
-    const data = await httpClient.post("/interest-area", { dongCode: dongcode });
+    const data = await httpClient.post("/interest-area", {
+      dongCode: dongcode,
+    });
     return data;
   } catch (error) {
     console.error("관심 지역 추가 실패:", error);

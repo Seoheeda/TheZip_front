@@ -15,7 +15,10 @@ const FindHouse = ({
   useEffect(() => {
     const handleClickOutside = (event) => {
       // 드롭다운 외부 클릭 시 닫기
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
         setDropdownViewHouse(false);
       }
     };

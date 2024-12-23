@@ -12,9 +12,9 @@ const MenuBar = () => {
   };
 
   return (
-      <div className="xl:hidden cursor-pointer" onClick={toggleMenu}>
-        {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-      </div>
+    <div className="xl:hidden cursor-pointer" onClick={toggleMenu}>
+      {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+    </div>
   );
 };
 

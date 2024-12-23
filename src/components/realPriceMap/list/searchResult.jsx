@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import apt from "../../../assets/imgs/apt.webp";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
-import { searchByDongcode, searchByCost, likeHouse, unLikeHouse } from "../../../api/houseInfo";
+import {
+  searchByDongcode,
+  searchByCost,
+  likeHouse,
+  unLikeHouse,
+} from "../../../api/houseInfo";
 import { formatToEokCheon, formatToPeung } from "../../../utils/methods";
 import { AptImageLoader } from "../../../utils/imageLoader";
 import Skeleton from "react-loading-skeleton";
@@ -60,9 +65,13 @@ const SearchResult = () => {
     setAptList((prevList) =>
       prevList.map((item) =>
         item.aptSeq === aptSeq
-          ? { ...item, isInterested: isLiked, likes: item.likes + (isLiked ? 1 : -1) }
-          : item
-      )
+          ? {
+              ...item,
+              isInterested: isLiked,
+              likes: item.likes + (isLiked ? 1 : -1),
+            }
+          : item,
+      ),
     );
   };
 
@@ -132,7 +141,9 @@ const SearchResult = () => {
                 {aptItem.isInterested ? (
                   <IoHeartSharp
                     className={`text-xl ${
-                      likeLoading[aptItem.aptSeq] ? "text-gray-400" : "text-primary-1"
+                      likeLoading[aptItem.aptSeq]
+                        ? "text-gray-400"
+                        : "text-primary-1"
                     }`}
                     onClick={(e) => {
                       e.stopPropagation(); // 이벤트 전파 중단
@@ -142,7 +153,9 @@ const SearchResult = () => {
                 ) : (
                   <IoHeartOutline
                     className={`text-xl ${
-                      likeLoading[aptItem.aptSeq] ? "text-gray-400" : "text-gray-700"
+                      likeLoading[aptItem.aptSeq]
+                        ? "text-gray-400"
+                        : "text-gray-700"
                     }`}
                     onClick={(e) => {
                       e.stopPropagation(); // 이벤트 전파 중단
@@ -155,7 +168,10 @@ const SearchResult = () => {
               <div>
                 <div className="w-32 h-36">
                   {aptItem.imageResponseDTO ? (
-                    <AptImageLoader imageURLs={aptItem.imageResponseDTO} alt={aptItem.title} />
+                    <AptImageLoader
+                      imageURLs={aptItem.imageResponseDTO}
+                      alt={aptItem.title}
+                    />
                   ) : (
                     <img src={apt} alt="아파트 이미지" />
                   )}
@@ -165,18 +181,32 @@ const SearchResult = () => {
                 <h1 className="text-lg font-semibold">
                   매매&nbsp;
                   {formatToEokCheon(
-                    aptItem.houseDealList[aptItem.houseDealList.length - 1].dealAmount
+                    aptItem.houseDealList[aptItem.houseDealList.length - 1]
+                      .dealAmount,
                   )}
                 </h1>
                 <div className="text-sm">{aptItem.apartName} 아파트</div>
                 <div className="flex space-x-3 text-sm">
-                  <div>{aptItem.houseDealList[aptItem.houseDealList.length - 1].floor}층</div>
                   <div>
-                    {aptItem.houseDealList[aptItem.houseDealList.length - 1].size} m<sup>2</sup>
+                    {
+                      aptItem.houseDealList[aptItem.houseDealList.length - 1]
+                        .floor
+                    }
+                    층
+                  </div>
+                  <div>
+                    {
+                      aptItem.houseDealList[aptItem.houseDealList.length - 1]
+                        .size
+                    }{" "}
+                    m<sup>2</sup>
                   </div>
                   <div>
                     {Math.round(
-                      formatToPeung(aptItem.houseDealList[aptItem.houseDealList.length - 1].size)
+                      formatToPeung(
+                        aptItem.houseDealList[aptItem.houseDealList.length - 1]
+                          .size,
+                      ),
                     )}
                     평
                   </div>

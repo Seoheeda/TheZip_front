@@ -93,14 +93,20 @@ const BoardDetailPage = () => {
           </div>
 
           <div className="mb-6">
-            <h1 className="text-2xl font-extrabold text-gray-800 mb-2">{post.title}</h1>
-            <p className="text-sm text-gray-500 mb-7">관리자 · {post.createdAt.slice(0, 10)}</p>
+            <h1 className="text-2xl font-extrabold text-gray-800 mb-2">
+              {post.title}
+            </h1>
+            <p className="text-sm text-gray-500 mb-7">
+              관리자 · {post.createdAt.slice(0, 10)}
+            </p>
             <div className="text-gray-700">{post.content}</div>
           </div>
 
           {/* 댓글 작성 */}
           <div className="mt-16 border-t border-gray-300 pt-4">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">댓글 작성</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">
+              댓글 작성
+            </h3>
             <div className="flex space-x-3">
               <input
                 value={newComment}
@@ -122,7 +128,9 @@ const BoardDetailPage = () => {
           {/* 댓글 목록 */}
 
           <div className="my-10">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">댓글 ({comments.length})</h2>
+            <h2 className="text-lg font-semibold text-gray-800 mb-4">
+              댓글 ({comments.length})
+            </h2>
             <div className="space-y-4">
               {Array.isArray(comments) &&
                 comments.map((comment) => (
@@ -132,17 +140,24 @@ const BoardDetailPage = () => {
                   >
                     <div>
                       <div className="flex items-center space-x-2">
-                        <p className="text-md text-gray-800">{comment.author}</p>
+                        <p className="text-md text-gray-800">
+                          {comment.author}
+                        </p>
                         <p className="text-sm text-gray-500">
-                          {comment.createdAt ? comment.createdAt.slice(0, 10) : "날짜 없음"}{" "}
+                          {comment.createdAt
+                            ? comment.createdAt.slice(0, 10)
+                            : "날짜 없음"}{" "}
                         </p>
                         <span className="text-primary-1">
-                          {comment.createdAt ? comment.createdAt.slice(11, 16) : ""}
+                          {comment.createdAt
+                            ? comment.createdAt.slice(11, 16)
+                            : ""}
                         </span>
                       </div>
                       <p className="text-gray-600">{comment.content}</p>
                     </div>
-                    {(comment.author === userInfo.nickname || userInfo.role === "ROLE_ADMIN") && (
+                    {(comment.author === userInfo.nickname ||
+                      userInfo.role === "ROLE_ADMIN") && (
                       <button
                         onClick={() => handleDeleteComment(comment.commentId)}
                         className="text-red-500 hover:text-red-700"

@@ -31,7 +31,10 @@ const HistoryList = () => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedData = reversedHouseDealList.slice(startIndex, startIndex + itemsPerPage);
+  const paginatedData = reversedHouseDealList.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -56,12 +59,14 @@ const HistoryList = () => {
 
   const handleLastPage = () => {
     setCurrentPage(totalPages);
-    setStartPage(Math.floor((totalPages - 1) / pageGroupSize) * pageGroupSize + 1);
+    setStartPage(
+      Math.floor((totalPages - 1) / pageGroupSize) * pageGroupSize + 1,
+    );
   };
 
   const visiblePages = Array.from(
     { length: Math.min(pageGroupSize, totalPages - startPage + 1) },
-    (_, index) => startPage + index
+    (_, index) => startPage + index,
   );
 
   return (
@@ -84,20 +89,27 @@ const HistoryList = () => {
                   key={index}
                   className={`${index % 2 === 0 ? "bg-gray-50" : "bg-white"} hover:bg-gray-100`}
                 >
-                  <td className="border px-3 py-2">{formatToEokCheon(deal.dealAmount)}</td>
+                  <td className="border px-3 py-2">
+                    {formatToEokCheon(deal.dealAmount)}
+                  </td>
                   <td className="border px-4 py-2">{deal.floor}</td>
                   <td className="border px-4 py-2">{deal.size}</td>
-                  <td className="border px-4 py-2">{Math.round(formatToPeung(deal.size))}</td>
+                  <td className="border px-4 py-2">
+                    {Math.round(formatToPeung(deal.size))}
+                  </td>
                   <td className="border px-2 py-2">
                     {`${deal.dealYear}-${String(deal.dealMonth).padStart(2, "0")}-${String(
-                      deal.dealDay
+                      deal.dealDay,
                     ).padStart(2, "0")}`}
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="border border-gray-200 px-4 py-2 text-center">
+                <td
+                  colSpan="4"
+                  className="border border-gray-200 px-4 py-2 text-center"
+                >
                   거래 내역이 없습니다.
                 </td>
               </tr>

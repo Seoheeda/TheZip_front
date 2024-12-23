@@ -30,7 +30,10 @@ const DetailPopup = () => {
     <div className="border-r w-[650px] min-w-96">
       <SearchAptBox apartName={aptDetail.apartName} />
       <div className="flex m-3 border rounded-md">
-        <MapAptArea latitude={aptDetail.latitude} longitude={aptDetail.longitude} />
+        <MapAptArea
+          latitude={aptDetail.latitude}
+          longitude={aptDetail.longitude}
+        />
       </div>
       <AptInfo />
       <HistoryGraph />

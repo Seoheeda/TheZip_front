@@ -45,12 +45,18 @@ const Colleges = ({
               className="px-6 py-4 mb-2 hover:bg-primary-4 bg-white cursor-pointer text-sm flex flex-col rounded-lg border border-gray-200 shadow-md transition-all duration-200"
               onClick={() => onselectCollege(college)}
             >
-              <div className="font-bold text-gray-700 text-base">{college.collegeName}</div>
-              <div className="text-xs text-gray-500 italic">{college.collegeEnglishName}</div>
+              <div className="font-bold text-gray-700 text-base">
+                {college.collegeName}
+              </div>
+              <div className="text-xs text-gray-500 italic">
+                {college.collegeEnglishName}
+              </div>
               <div className="text-sm text-gray-600 mt-1">
                 지역: {college.regionName} | {college.branchType}
               </div>
-              <div className="text-xs text-gray-400 mt-1">{college.roadAddress}</div>
+              <div className="text-xs text-gray-400 mt-1">
+                {college.roadAddress}
+              </div>
               <a
                 href={`https://${college.homePage}`}
                 target="_blank"

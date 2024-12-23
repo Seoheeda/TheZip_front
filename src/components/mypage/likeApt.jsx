@@ -88,19 +88,24 @@ const LikeApt = () => {
                 <p className="text-xs text-gray-500 truncate">
                   {house.houseInfo.dongName} {house.houseInfo.roadName}{" "}
                   {house.houseInfo.roadNameBonbun}
-                  {house.houseInfo.roadNameBubun ? `-${house.houseInfo.roadNameBubun}` : ""}
+                  {house.houseInfo.roadNameBubun
+                    ? `-${house.houseInfo.roadNameBubun}`
+                    : ""}
                 </p>
                 <p className="text-xs text-gray-500 truncate">
                   {house.houseInfo.buildYear}년 {house.houseDeal.floor}층
                 </p>
                 <p className="text-xs text-gray-500 truncate">
-                  {house.houseDeal.size}㎡ {Math.round(formatToPeung(house.houseDeal.size))}평
+                  {house.houseDeal.size}㎡{" "}
+                  {Math.round(formatToPeung(house.houseDeal.size))}평
                 </p>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center py-10 w-full">관심 매물이 없습니다.</p>
+          <p className="text-gray-500 text-center py-10 w-full">
+            관심 매물이 없습니다.
+          </p>
         )}
       </div>
     </div>

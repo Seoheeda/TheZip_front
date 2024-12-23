@@ -89,7 +89,11 @@ const AreaDropdown = () => {
           onClick={() => {
             setArea({ sido: null, gugun: null, dong: null });
             getList();
-            setDropdownView({ city: !dropdownView.city, district: false, neighborhood: false });
+            setDropdownView({
+              city: !dropdownView.city,
+              district: false,
+              neighborhood: false,
+            });
           }}
         >
           <div className="flex flex-row justify-center items-center pt-0.5">
@@ -109,7 +113,7 @@ const AreaDropdown = () => {
           <ul className="bg-white h-64 overflow-auto custom-scrollbar border border-gray-2 mt-3 rounded-lg text-sm space-y-1 z-50 relative">
             {sidoList.map((sidoName, i) => (
               <li
-                key={ i+ '_1'}
+                key={i + "_1"}
                 onClick={() => {
                   handleSelectSido(sidoName);
                 }}
@@ -125,7 +129,11 @@ const AreaDropdown = () => {
         <div
           onClick={() => {
             setArea((prev) => ({ ...prev, dong: null }));
-            setDropdownView({ city: false, district: !dropdownView.district, neighborhood: false });
+            setDropdownView({
+              city: false,
+              district: !dropdownView.district,
+              neighborhood: false,
+            });
           }}
         >
           <div className="flex flex-row justify-center items-center pt-0.5">
@@ -148,7 +156,7 @@ const AreaDropdown = () => {
             {gugunList.length > 0 ? (
               gugunList.map((gugunName, i) => (
                 <li
-                  key={i+'_2'}
+                  key={i + "_2"}
                   onClick={() => handleSelectGugun(gugunName)}
                   className="w-full h-6 hover:bg-gray-3"
                 >
@@ -172,7 +180,11 @@ const AreaDropdown = () => {
           }}
         >
           <div className="flex flex-row justify-center items-center pt-0.5">
-            {area.dong === null ? <p>동</p> : <p className="truncate max-w-[100px]">{area.dong}</p>}
+            {area.dong === null ? (
+              <p>동</p>
+            ) : (
+              <p className="truncate max-w-[100px]">{area.dong}</p>
+            )}
             {dropdownView.neighborhood ? (
               <IoIosArrowUp className=" text-gray-600 ml-2" />
             ) : (
@@ -185,7 +197,7 @@ const AreaDropdown = () => {
             {dongList.length > 0 ? (
               dongList.map((dongName, i) => (
                 <li
-                  key={i+'_3'}
+                  key={i + "_3"}
                   onClick={() => handleSelectDong(dongName)}
                   className="w-full h-6 hover:bg-gray-3"
                 >

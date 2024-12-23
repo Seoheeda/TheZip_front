@@ -30,39 +30,63 @@ const DormDetail = ({ dormId }) => {
             key={dormDetail.dormitoryId}
             className="bg-white border border-gray-200 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <h3 className="text-xl font-semibold text-gray-800 mb-4">{dormDetail.name}</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">
+              {dormDetail.name}
+            </h3>
             <table className="min-w-full table-auto text-sm">
               <tbody>
                 <tr className="border-b">
-                  <td className="px-4 py-2 font-semibold text-gray-600">종류</td>
-                  <td className="px-4 py-2 text-gray-800">{dormDetail.dormitoryKind}</td>
+                  <td className="px-4 py-2 font-semibold text-gray-600">
+                    종류
+                  </td>
+                  <td className="px-4 py-2 text-gray-800">
+                    {dormDetail.dormitoryKind}
+                  </td>
                 </tr>
                 <tr className="border-b">
-                  <td className="px-4 py-2 font-semibold text-gray-600">방 번호</td>
-                  <td className="px-4 py-2 text-gray-800">{dormDetail.roomNumber}</td>
+                  <td className="px-4 py-2 font-semibold text-gray-600">
+                    방 번호
+                  </td>
+                  <td className="px-4 py-2 text-gray-800">
+                    {dormDetail.roomNumber}
+                  </td>
                 </tr>
                 <tr className="border-b">
-                  <td className="px-4 py-2 font-semibold text-gray-600">수용 인원</td>
-                  <td className="px-4 py-2 text-gray-800">{dormDetail.capacity}명</td>
+                  <td className="px-4 py-2 font-semibold text-gray-600">
+                    수용 인원
+                  </td>
+                  <td className="px-4 py-2 text-gray-800">
+                    {dormDetail.capacity}명
+                  </td>
                 </tr>
                 <tr className="border-b">
-                  <td className="px-4 py-2 font-semibold text-gray-600">월세</td>
-                  <td className="px-4 py-2 text-gray-800">{dormDetail.rent.toLocaleString()}원</td>
+                  <td className="px-4 py-2 font-semibold text-gray-600">
+                    월세
+                  </td>
+                  <td className="px-4 py-2 text-gray-800">
+                    {dormDetail.rent.toLocaleString()}원
+                  </td>
                 </tr>
                 <tr className="border-b">
-                  <td className="px-4 py-2 font-semibold text-gray-600">관리비</td>
+                  <td className="px-4 py-2 font-semibold text-gray-600">
+                    관리비
+                  </td>
                   <td className="px-4 py-2 text-gray-800">
                     {dormDetail.maintenance.toLocaleString()}원
                   </td>
                 </tr>
                 <tr className="border-b">
-                  <td className="px-4 py-2 font-semibold text-gray-600">보증금</td>
+                  <td className="px-4 py-2 font-semibold text-gray-600">
+                    보증금
+                  </td>
                   <td className="px-4 py-2 text-gray-800">
                     {dormDetail.deposit.toLocaleString()}원
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-semibold text-gray-600">연간 총 비용</td>
+                  <td className="px-4 py-2 font-semibold text-gray-600">
+                    연간 총 비용
+                  </td>
                   <td className="px-4 py-2 text-gray-800">
                     {dormDetail.yearlyRent.toLocaleString()}원
                   </td>

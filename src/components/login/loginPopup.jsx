@@ -1,7 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import MotionFace from "./motionFace";
 import PopupLayout from "../PopupLayout.tsx";
-import { KakaoLoginBtn, GoogleLoginBtn, UserSignupBtn, AgentSignupBtn, LoginBtn } from "../buttons";
+import {
+  KakaoLoginBtn,
+  GoogleLoginBtn,
+  UserSignupBtn,
+  AgentSignupBtn,
+  LoginBtn,
+} from "../buttons";
 import { EmailInput, PasswordInput } from "./inputs";
 import { useSetRecoilState } from "recoil";
 import {
@@ -117,8 +123,12 @@ const LoginPopup = ({ onClose }) => {
       </div>
       <LoginBtn onClick={submitForm} />
       <div className="flex justify-evenly space-x-2">
-        <UserSignupBtn openUserSignupPopup={() => setUserSignupPopupOpen(true)} />
-        <AgentSignupBtn openAgentSignupPopup={() => setAgentSignupPopupOpen(true)} />
+        <UserSignupBtn
+          openUserSignupPopup={() => setUserSignupPopupOpen(true)}
+        />
+        <AgentSignupBtn
+          openAgentSignupPopup={() => setAgentSignupPopupOpen(true)}
+        />
       </div>
       <div className="border-b border-gray-2 my-2" />
       <KakaoLoginBtn />

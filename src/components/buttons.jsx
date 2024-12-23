@@ -7,7 +7,9 @@ export const GoogleLoginBtn = () => {
     <button className="h-9 border border-gray-2 rounded-md flex items-center space-x-2 px-4 my-1">
       <img src={GoogleLogo} alt="Google Logo" width="25px" className="fixed" />
       <div className="flex w-full">
-        <div className="self-center text-center  w-full text-sm">구글로 시작하기</div>
+        <div className="self-center text-center  w-full text-sm">
+          구글로 시작하기
+        </div>
       </div>
     </button>
   );
@@ -26,7 +28,9 @@ export const KakaoLoginBtn = () => {
     >
       <img src={KakaoLogo} alt="Kakao Logo" width="25px" className="fixed" />
       <div className="flex w-full">
-        <div className="self-center text-center w-full text-sm">카카오로 시작하기</div>
+        <div className="self-center text-center w-full text-sm">
+          카카오로 시작하기
+        </div>
       </div>
     </button>
   );
@@ -68,7 +72,10 @@ export const LoginBtn = ({ onClick }) => {
 
 export const SignupBtn = ({ onClick }) => {
   return (
-    <button onClick={onClick} className="bg-gray-2 h-9 rounded-md my-2 hover:bg-primary-4 text-sm">
+    <button
+      onClick={onClick}
+      className="bg-gray-2 h-9 rounded-md my-2 hover:bg-primary-4 text-sm"
+    >
       이메일로 시작하기
     </button>
   );

@@ -13,7 +13,9 @@ export const AptImageLoader = ({ imageURLs, alt }) => {
         }
         // imageURL이 http로 시작하지 않으면 이미지를 서버로부터 불러오기
         else if (!imageURLs.imageURL.startsWith("http")) {
-          setImageSrc("http://70.12.60.165:8080/images/apart/" + imageURLs.imageURL);
+          setImageSrc(
+            "http://70.12.60.165:8080/images/apart/" + imageURLs.imageURL,
+          );
         } else {
           // imageURL이 http로 시작하면 그대로 사용
           setImageSrc(imageURLs.imageURL);
@@ -33,7 +35,9 @@ export const AptImageLoader = ({ imageURLs, alt }) => {
     return <div className="spinner"></div>; // 로딩 중일 때 표시할 내용
   }
 
-  return <img src={imageSrc} alt={alt} className="w-full h-full object-cover" />;
+  return (
+    <img src={imageSrc} alt={alt} className="w-full h-full object-cover" />
+  );
 };
 
 export const CharterImageLoader = ({ imageURLs, alt, rounded }) => {
@@ -48,7 +52,9 @@ export const CharterImageLoader = ({ imageURLs, alt, rounded }) => {
         }
         // imageURL이 http로 시작하지 않으면 이미지를 서버로부터 불러오기
         else if (!imageURLs.imageURL.startsWith("http")) {
-          setImageSrc("http://70.12.60.165:8080/images/charter/" + imageURLs.imageURL);
+          setImageSrc(
+            "http://70.12.60.165:8080/images/charter/" + imageURLs.imageURL,
+          );
         } else {
           // imageURL이 http로 시작하면 그대로 사용
           setImageSrc(imageURLs.imageURL);

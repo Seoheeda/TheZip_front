@@ -19,16 +19,43 @@ const MotionFace = ({ isPasswordFocus, getEyeTransform, className }) => {
         <circle cx="12" cy="12" r="10" fill="#FFD966" />
         {isPasswordFocus ? (
           <>
-            <path d="M7,10 Q8,11.5 9,10" stroke="#333" strokeWidth="0.5" fill="none" />
-            <path d="M15,10 Q16,11.5 17,10" stroke="#333" strokeWidth="0.5" fill="none" />
+            <path
+              d="M7,10 Q8,11.5 9,10"
+              stroke="#333"
+              strokeWidth="0.5"
+              fill="none"
+            />
+            <path
+              d="M15,10 Q16,11.5 17,10"
+              stroke="#333"
+              strokeWidth="0.5"
+              fill="none"
+            />
           </>
         ) : (
           <>
-            <circle cx="8" cy="10" r="1.2" fill="#333" transform={getEyeTransform()} />
-            <circle cx="16" cy="10" r="1.2" fill="#333" transform={getEyeTransform()} />
+            <circle
+              cx="8"
+              cy="10"
+              r="1.2"
+              fill="#333"
+              transform={getEyeTransform()}
+            />
+            <circle
+              cx="16"
+              cy="10"
+              r="1.2"
+              fill="#333"
+              transform={getEyeTransform()}
+            />
           </>
         )}
-        <path d="M8,16 C10,19 14,19 16,16" stroke="#333" strokeWidth="0.5" fill="none" />
+        <path
+          d="M8,16 C10,19 14,19 16,16"
+          stroke="#333"
+          strokeWidth="0.5"
+          fill="none"
+        />
       </svg>
     </motion.div>
   );

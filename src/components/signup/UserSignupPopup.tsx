@@ -1,5 +1,5 @@
-import React, { useState, FC } from "react";
-import PopupLayout from "../PopupLayout.tsx";
+import { useState, FC } from "react";
+import PopupLayout from "../PopupLayout";
 import {
   EmailInput,
   PasswordInput,
@@ -7,27 +7,30 @@ import {
   NicknameInput,
   GenderInput,
   ImageInput,
-} from "./inputs.jsx";
+} from "./inputs";
 import { KakaoLoginBtn, GoogleLoginBtn, SignupBtn } from "../buttons.jsx";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { SubmitSignup } from "../../api/auth.ts";
+import { SubmitSignup } from "../../api/auth";
 import { useSetRecoilState } from "recoil";
-import { loginPopupOpenState, userSignupPopupOpenState } from "../../recoil/atoms.js";
+import {
+  loginPopupOpenState,
+  userSignupPopupOpenState,
+} from "../../recoil/atoms.js";
 
 interface UserSignupPopupProps {
-  onClose: () => void; 
-} 
+  onClose: () => void;
+}
 
 const UserSignupPopup: FC<UserSignupPopupProps> = ({ onClose }) => {
   const setUserSignupPopupOpen = useSetRecoilState(userSignupPopupOpenState);
   const setLoginPopupOpen = useSetRecoilState(loginPopupOpenState);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [gender, setGender] = useState("MALE");
-  const [imgFile, setImgFile] = useState(null);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordCheck, setPasswordCheck] = useState<string>("");
+  const [nickname, setNickname] = useState<string>("");
+  const [gender, setGender] = useState<string>("MALE");
+  const [imgFile, setImgFile] = useState<File | null>(null);
   const role = "ROLE_USER";
 
   const toggleMenu = () => {
@@ -55,16 +58,19 @@ const UserSignupPopup: FC<UserSignupPopupProps> = ({ onClose }) => {
   return (
     <PopupLayout onClose={onClose}>
       <FaArrowLeftLong onClick={toggleMenu} className="cursor-pointer" />
-      <div className="text-xl self-center mb-2">개인회원 가입</div>
+      <div className="text-xl self-center my-1">개인회원 가입</div>
       <ImageInput setImgFile={setImgFile} />
       <EmailInput setEmail={setEmail} />
       <PasswordInput setPassword={setPassword} />
-      <PasswordCheckInput password={password} setPasswordCheck={setPasswordCheck} />
+      <PasswordCheckInput
+        password={password}
+        setPasswordCheck={setPasswordCheck}
+      />
       <NicknameInput nickname={nickname} setNickname={setNickname} />
       <GenderInput gender={gender} setGender={setGender} />
       <SignupBtn onClick={submitForm} />
-      <div className="border-b border-gray-2 my-2"/>
-      <KakaoLoginBtn/>
+      <div className="border-b border-gray-2 my-2" />
+      <KakaoLoginBtn />
       <GoogleLoginBtn />
     </PopupLayout>
   );

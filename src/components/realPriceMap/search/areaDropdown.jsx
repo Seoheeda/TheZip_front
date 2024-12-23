@@ -89,7 +89,11 @@ const AreaDropdown = () => {
           onClick={() => {
             setArea({ sido: null, gugun: null, dong: null });
             getList();
-            setDropdownView({ city: !dropdownView.city, district: false, neighborhood: false });
+            setDropdownView({
+              city: !dropdownView.city,
+              district: false,
+              neighborhood: false,
+            });
           }}
         >
           <div className="flex flex-row justify-center items-center pt-0.5">
@@ -125,7 +129,11 @@ const AreaDropdown = () => {
         <div
           onClick={() => {
             setArea((prev) => ({ ...prev, dong: null }));
-            setDropdownView({ city: false, district: !dropdownView.district, neighborhood: false });
+            setDropdownView({
+              city: false,
+              district: !dropdownView.district,
+              neighborhood: false,
+            });
           }}
         >
           <div className="flex flex-row justify-center items-center pt-0.5">
@@ -172,7 +180,11 @@ const AreaDropdown = () => {
           }}
         >
           <div className="flex flex-row justify-center items-center pt-0.5">
-            {area.dong === null ? <p>동</p> : <p className="truncate max-w-[100px]">{area.dong}</p>}
+            {area.dong === null ? (
+              <p>동</p>
+            ) : (
+              <p className="truncate max-w-[100px]">{area.dong}</p>
+            )}
             {dropdownView.neighborhood ? (
               <IoIosArrowUp className=" text-gray-600 ml-2" />
             ) : (

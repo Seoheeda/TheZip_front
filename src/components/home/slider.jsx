@@ -68,7 +68,9 @@ const SliderCost = ({
     <div className="w-full my-10 text-center">
       {selected === 0 && (
         <div>
-          <div className="flex text-lg font-medium text-gray-600 mb-3">매매 가격</div>
+          <div className="flex text-lg font-medium text-gray-600 mb-3">
+            매매 가격
+          </div>
           <Slider
             range // 범위 슬라이더를 활성화
             min={1000}
@@ -98,7 +100,9 @@ const SliderCost = ({
       )}
       {selected === 1 && (
         <div>
-          <div className="flex text-lg font-medium text-gray-600 mb-3">전세 가격</div>
+          <div className="flex text-lg font-medium text-gray-600 mb-3">
+            전세 가격
+          </div>
           <Slider
             range // 범위 슬라이더를 활성화
             min={1000}
@@ -129,7 +133,9 @@ const SliderCost = ({
       {selected === 2 && (
         <>
           <div>
-            <div className="flex text-lg font-medium text-gray-600 mb-3">보증금 가격</div>
+            <div className="flex text-lg font-medium text-gray-600 mb-3">
+              보증금 가격
+            </div>
             <Slider
               range // 범위 슬라이더를 활성화
               min={10}
@@ -140,8 +146,18 @@ const SliderCost = ({
               allowCross={false} // 핸들이 교차하지 않도록 설정
               trackStyle={[{ backgroundColor: "#E3C04D", height: 8 }]} // 선택된 범위 색상
               handleStyle={[
-                { borderColor: "#E3C04D", height: 20, width: 20, marginTop: -7 },
-                { borderColor: "#E3C04D", height: 20, width: 20, marginTop: -7 },
+                {
+                  borderColor: "#E3C04D",
+                  height: 20,
+                  width: 20,
+                  marginTop: -7,
+                },
+                {
+                  borderColor: "#E3C04D",
+                  height: 20,
+                  width: 20,
+                  marginTop: -7,
+                },
               ]} // 핸들 스타일
               railStyle={{ backgroundColor: "#ddd", height: 8 }} // 선택되지 않은 부분
             />
@@ -149,7 +165,9 @@ const SliderCost = ({
               <p>
                 <strong>{formatToEokCheon(rangeValuesMonthyD[0])}</strong> -{" "}
                 {rangeValuesMonthyD[1] === 10000 ? (
-                  <strong>{formatToEokCheon(rangeValuesMonthyD[1])} 이상</strong>
+                  <strong>
+                    {formatToEokCheon(rangeValuesMonthyD[1])} 이상
+                  </strong>
                 ) : (
                   <strong>{formatToEokCheon(rangeValuesMonthyD[1])}</strong>
                 )}
@@ -157,7 +175,9 @@ const SliderCost = ({
             </div>
           </div>
           <div>
-            <div className="flex text-lg font-medium text-gray-600 mb-3">월세 가격</div>
+            <div className="flex text-lg font-medium text-gray-600 mb-3">
+              월세 가격
+            </div>
             <Slider
               range // 범위 슬라이더를 활성화
               min={10}
@@ -168,8 +188,18 @@ const SliderCost = ({
               allowCross={false} // 핸들이 교차하지 않도록 설정
               trackStyle={[{ backgroundColor: "#E3C04D", height: 8 }]} // 선택된 범위 색상
               handleStyle={[
-                { borderColor: "#E3C04D", height: 20, width: 20, marginTop: -7 },
-                { borderColor: "#E3C04D", height: 20, width: 20, marginTop: -7 },
+                {
+                  borderColor: "#E3C04D",
+                  height: 20,
+                  width: 20,
+                  marginTop: -7,
+                },
+                {
+                  borderColor: "#E3C04D",
+                  height: 20,
+                  width: 20,
+                  marginTop: -7,
+                },
               ]} // 핸들 스타일
               railStyle={{ backgroundColor: "#ddd", height: 8 }} // 선택되지 않은 부분
             />
@@ -177,7 +207,9 @@ const SliderCost = ({
               <p>
                 <strong>{formatToEokCheon(rangeValuesMonthly[0])}</strong> -{" "}
                 {rangeValuesMonthly[1] === 10000 ? (
-                  <strong>{formatToEokCheon(rangeValuesMonthly[1])} 이상</strong>
+                  <strong>
+                    {formatToEokCheon(rangeValuesMonthly[1])} 이상
+                  </strong>
                 ) : (
                   <strong>{formatToEokCheon(rangeValuesMonthly[1])}</strong>
                 )}

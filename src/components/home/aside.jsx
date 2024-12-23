@@ -25,12 +25,16 @@ const Aside = () => {
     }
 
     if (selected === 0) {
-      navigate(`/realprice_map/dong/${dongCode}/${rangeValuesApt[0]}/${rangeValuesApt[1]}`);
+      navigate(
+        `/realprice_map/dong/${dongCode}/${rangeValuesApt[0]}/${rangeValuesApt[1]}`,
+      );
     } else if (selected === 1) {
-      navigate(`/charters/dong/${dongCode}/${rangeValuesYearly[0]}/${rangeValuesYearly[1]}`);
+      navigate(
+        `/charters/dong/${dongCode}/${rangeValuesYearly[0]}/${rangeValuesYearly[1]}`,
+      );
     } else if (selected === 2) {
       navigate(
-        `/charters/dong/${dongCode}/${rangeValuesMonthyD[0]}/${rangeValuesMonthyD[1]}/${rangeValuesMonthly[0]}/${rangeValuesMonthly[1]}`
+        `/charters/dong/${dongCode}/${rangeValuesMonthyD[0]}/${rangeValuesMonthyD[1]}/${rangeValuesMonthly[0]}/${rangeValuesMonthly[1]}`,
       );
     }
   };
@@ -39,7 +43,11 @@ const Aside = () => {
     <div className="h-full lg:w-1/4 bg-white p-6 rounded-md shadow-lg">
       <h2 className="text-xl font-bold text-gray-800">빠른 매물 찾기</h2>
       <AreaDropdown dongCode={dongCode} setDongCode={setDongCode} />
-      <Toggle options={["매물", "전세", "월세"]} value={selected} onChange={setSelected} />
+      <Toggle
+        options={["매물", "전세", "월세"]}
+        value={selected}
+        onChange={setSelected}
+      />
       <SliderCost
         selected={selected}
         rangeValuesApt={rangeValuesApt}

@@ -1,5 +1,5 @@
 import React, { useState, FC } from "react";
-import PopupLayout from "../PopupLayout.tsx";
+import PopupLayout from "../PopupLayout";
 import {
   EmailInput,
   PasswordInput,
@@ -7,16 +7,19 @@ import {
   NicknameInput,
   GenderInput,
   ImageInput,
-} from "./inputs.jsx";
+} from "./inputs";
 import { KakaoLoginBtn, GoogleLoginBtn, SignupBtn } from "../buttons.jsx";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { SubmitSignup } from "../../api/auth.ts";
+import { SubmitSignup } from "../../api/auth";
 import { useSetRecoilState } from "recoil";
-import { loginPopupOpenState, agentSignupPopupOpenState } from "../../recoil/atoms.js";
+import {
+  loginPopupOpenState,
+  agentSignupPopupOpenState,
+} from "../../recoil/atoms.js";
 
 interface AgentSignupPopupProps {
-  onClose: () => void; 
-} 
+  onClose: () => void;
+}
 
 const AgentSignupPopup: FC<AgentSignupPopupProps> = ({ onClose }) => {
   const setAgentSignupPopupOpen = useSetRecoilState(agentSignupPopupOpenState);
@@ -59,11 +62,14 @@ const AgentSignupPopup: FC<AgentSignupPopupProps> = ({ onClose }) => {
       <ImageInput setImgFile={setImgFile} />
       <EmailInput setEmail={setEmail} />
       <PasswordInput setPassword={setPassword} />
-      <PasswordCheckInput password={password} setPasswordCheck={setPasswordCheck} />
+      <PasswordCheckInput
+        password={password}
+        setPasswordCheck={setPasswordCheck}
+      />
       <NicknameInput nickname={nickname} setNickname={setNickname} />
       <GenderInput gender={gender} setGender={setGender} />
       <SignupBtn onClick={submitForm} />
-      <div className="border-b border-gray-2 my-2"/>
+      <div className="border-b border-gray-2 my-2" />
       <KakaoLoginBtn />
       <GoogleLoginBtn />
     </PopupLayout>

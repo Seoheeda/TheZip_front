@@ -15,7 +15,15 @@ import {
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
 
 const HistoryGraph = () => {
   const { aptSeq } = useParams();
@@ -43,7 +51,8 @@ const HistoryGraph = () => {
           houseDealList = houseDealList.filter((_, index) => index % 2 === 0);
         }
 
-        const lastDeal = aptData.houseDealList[aptData.houseDealList.length - 1];
+        const lastDeal =
+          aptData.houseDealList[aptData.houseDealList.length - 1];
         if (!houseDealList.includes(lastDeal)) {
           houseDealList.push(lastDeal);
         }
@@ -56,8 +65,8 @@ const HistoryGraph = () => {
         houseDealList = houseDealList.filter((deal) => {
           const dealDate = new Date(
             `${deal.dealYear}-${String(deal.dealMonth).padStart(2, "0")}-${String(
-              deal.dealDay
-            ).padStart(2, "0")}`
+              deal.dealDay,
+            ).padStart(2, "0")}`,
           );
           return dealDate >= oneYearAgo;
         });
@@ -70,11 +79,11 @@ const HistoryGraph = () => {
         const labels = houseDealList.map(
           (deal) =>
             `${deal.dealYear}-${String(deal.dealMonth).padStart(2, "0")}-${String(
-              deal.dealDay
-            ).padStart(2, "0")}`
+              deal.dealDay,
+            ).padStart(2, "0")}`,
         );
         const data = houseDealList.map((deal) =>
-          deal.dealAmount ? parseInt(deal.dealAmount.replace(",", ""), 10) : 0
+          deal.dealAmount ? parseInt(deal.dealAmount.replace(",", ""), 10) : 0,
         );
 
         setChartData({
@@ -121,7 +130,9 @@ const HistoryGraph = () => {
       <div className="w-full">
         {noData ? (
           <div className="w-full h-32 border border-gray-2 rounded-md flex items-center justify-center bg-gray-100">
-            <div className="text-md text-gray-500">최근 3년동안 거래내역이 없습니다.</div>
+            <div className="text-md text-gray-500">
+              최근 3년동안 거래내역이 없습니다.
+            </div>
           </div>
         ) : chartData ? (
           <div className="w-full h-56 p-3 border border-gray-2 rounded-md flex items-center justify-center">

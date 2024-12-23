@@ -36,9 +36,14 @@ import { useNavigate } from "react-router-dom";
 const App = () => {
   const navigate = useNavigate();
   const [chatbotOpen, setChatbotOpen] = useRecoilState(chatbotOpenState);
-  const [loginPopupOpen, setLoginPopupOpen] = useRecoilState(loginPopupOpenState);
-  const [userSignupPopupOpen, setUserSignupPopupOpen] = useRecoilState(userSignupPopupOpenState);
-  const [agentSignupPopupOpen, setAgentSignupPopupOpen] = useRecoilState(agentSignupPopupOpenState);
+  const [loginPopupOpen, setLoginPopupOpen] =
+    useRecoilState(loginPopupOpenState);
+  const [userSignupPopupOpen, setUserSignupPopupOpen] = useRecoilState(
+    userSignupPopupOpenState,
+  );
+  const [agentSignupPopupOpen, setAgentSignupPopupOpen] = useRecoilState(
+    agentSignupPopupOpenState,
+  );
   const [menuOpen, setMenuOpen] = useRecoilState(menuOpenState); // 메뉴 열림 상태
 
   return (
@@ -47,12 +52,27 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/realprice_map" element={<RealPriceMap />} />
-        <Route path="/realprice_map/dong/:dongCode" element={<AreaSearchedPage />} />
-        <Route path="/realprice_map/dong/:dongCode/:min/:max" element={<AreaSearchedPage />} />
-        <Route path="/realprice_map/detail/:aptSeq" element={<AptDetailPage />} />
+        <Route
+          path="/realprice_map/dong/:dongCode"
+          element={<AreaSearchedPage />}
+        />
+        <Route
+          path="/realprice_map/dong/:dongCode/:min/:max"
+          element={<AreaSearchedPage />}
+        />
+        <Route
+          path="/realprice_map/detail/:aptSeq"
+          element={<AptDetailPage />}
+        />
         <Route path="/charters" element={<CharterMap />} />
-        <Route path="/charters/dong/:dongCode" element={<CharterAreaSearchedPage />} />
-        <Route path="/charters/dong/:dongCode/:charterKind" element={<CharterAreaSearchedPage />} />
+        <Route
+          path="/charters/dong/:dongCode"
+          element={<CharterAreaSearchedPage />}
+        />
+        <Route
+          path="/charters/dong/:dongCode/:charterKind"
+          element={<CharterAreaSearchedPage />}
+        />
         <Route
           path="/charters/dong/:dongCode/:depositMin/:depositMax"
           element={<CharterAreaSearchedPage />}
@@ -69,13 +89,22 @@ const App = () => {
           path="/charters/college/:collegeName/:dongCode/:charterKind"
           element={<CharterAreaSearchedPage />}
         />
-        <Route path="/charters/detail/:charterId" element={<CharterDetailPage />} />
-        <Route path="/charters/college/detail/:charterId" element={<CharterDetailPage />} />
+        <Route
+          path="/charters/detail/:charterId"
+          element={<CharterDetailPage />}
+        />
+        <Route
+          path="/charters/college/detail/:charterId"
+          element={<CharterDetailPage />}
+        />
         <Route path="/board" element={<BoardPage />} />
         <Route path="/board/:boardId" element={<BoardDetailPage />} />
         <Route path="/board/edit/:boardId" element={<BoardUpdatePage />} />
         <Route path="/board/post" element={<BoardPostPage />} />
-        <Route path="/login" element={<LoginPopup onClose={() => navigate("/")} />} />
+        <Route
+          path="/login"
+          element={<LoginPopup onClose={() => navigate("/")} />}
+        />
         <Route path="/dormitory" element={<Dormitory />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="*" element={<ErrorPage />} />
@@ -86,8 +115,12 @@ const App = () => {
           onMouseUp={(e) => e.preventDefault()}
         />
       )}
-      {userSignupPopupOpen && <UserSignupPopup onClose={() => setUserSignupPopupOpen(false)} />}
-      {agentSignupPopupOpen && <AgentSignupPopup onClose={() => setAgentSignupPopupOpen(false)} />}
+      {userSignupPopupOpen && (
+        <UserSignupPopup onClose={() => setUserSignupPopupOpen(false)} />
+      )}
+      {agentSignupPopupOpen && (
+        <AgentSignupPopup onClose={() => setAgentSignupPopupOpen(false)} />
+      )}
       {menuOpen && <DropdownMenu />}
       <div className="relative z-10">
         {chatbotOpen && (

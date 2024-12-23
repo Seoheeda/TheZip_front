@@ -56,7 +56,9 @@ const PopularCharter = () => {
 
   return (
     <div className="flex flex-col bg-white p-8">
-      <h2 className="text-md font-bold text-center text-gray-800">실시간 가장 인기 있는 집</h2>
+      <h2 className="text-md font-bold text-center text-gray-800">
+        실시간 가장 인기 있는 집
+      </h2>
       <div className="grid grid-cols-2 gap-6 mt-4">
         {loading ? (
           renderSkeletons()
@@ -72,7 +74,9 @@ const PopularCharter = () => {
                   <CharterImageLoader imageURLs={home.image} alt={home.title} />
                 </div>
                 <div className="px-3 py-2 cursor-pointer">
-                  <h3 className="truncate text-md font-bold text-gray-800">{home.name}</h3>
+                  <h3 className="truncate text-md font-bold text-gray-800">
+                    {home.name}
+                  </h3>
                   <p className="text-sm">{home.charterDong}</p>
                   <p className="text-primary-1 text-sm mt-2">
                     전세 {formatToEokCheon(home.deposit)}
@@ -90,7 +94,9 @@ const PopularCharter = () => {
                   <CharterImageLoader imageURLs={home.image} alt={home.title} />
                 </div>
                 <div className="px-3 py-2 cursor-pointer">
-                  <h3 className="truncate text-md font-bold text-gray-800">{home.name}</h3>
+                  <h3 className="truncate text-md font-bold text-gray-800">
+                    {home.name}
+                  </h3>
                   <p className="text-sm">{home.charterDong}</p>
                   <p className="text-primary-1 text-sm mt-2">
                     {home.rent} / {home.deposit}
