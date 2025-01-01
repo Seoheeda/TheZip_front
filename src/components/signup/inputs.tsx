@@ -22,7 +22,7 @@ import {
   ImageInputProps,
 } from "../../types/interfaces";
 
-export const EmailInput: FC<EmailInputProps> = ({ setEmail }) => {
+export const EmailInput: React.FC<EmailInputProps> = ({ setEmail }) => {
   const [emailCheck, setEmailCheck] = useState<EmailCheckStatus>(EmailCheckStatus.EMPTY);
   const [isFocused, setIsFocused] = useState<boolean>(false);
 

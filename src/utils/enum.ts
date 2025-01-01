@@ -1,9 +1,7 @@
-export const REGEX_EMAIL: RegExp = new RegExp(
-  "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-);
+export const REGEX_EMAIL: RegExp = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
 
 export const REGEX_PASS: RegExp = new RegExp(
-  "^(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()-+=<>?]).{8,20}$",
+  "^(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*()-+=<>?]).{8,20}$"
 );
 
 export const REGEX_NICK: RegExp = new RegExp("^[^\\s]{2,15}$");
@@ -11,6 +9,11 @@ export const REGEX_NICK: RegExp = new RegExp("^[^\\s]{2,15}$");
 export enum GENDER {
   MALE = "MALE",
   FEMALE = "FEMALE",
+}
+
+export enum ROLE {
+  ROLE_USER = "ROLE_USER",
+  ROLE_AGENT = "ROLE_AGENT",
 }
 
 export enum EmailCheckStatus {

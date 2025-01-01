@@ -12,10 +12,8 @@ import { KakaoLoginBtn, GoogleLoginBtn, SignupBtn } from "../buttons.jsx";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { SubmitSignup } from "../../api/auth";
 import { useSetRecoilState } from "recoil";
-import {
-  loginPopupOpenState,
-  agentSignupPopupOpenState,
-} from "../../recoil/atoms.js";
+import { loginPopupOpenState, agentSignupPopupOpenState } from "../../recoil/atoms.js";
+import { GENDER, ROLE } from "../../utils/enum";
 
 interface AgentSignupPopupProps {
   onClose: () => void;
@@ -29,9 +27,9 @@ const AgentSignupPopup: FC<AgentSignupPopupProps> = ({ onClose }) => {
   const [password, setPassword] = useState<string>("");
   const [passwordCheck, setPasswordCheck] = useState<string>("");
   const [nickname, setNickname] = useState<string>("");
-  const [gender, setGender] = useState<string>("MALE");
+  const [gender, setGender] = useState<string>(GENDER.MALE);
   const [imgFile, setImgFile] = useState<File | null>(null);
-  const role = "ROLE_AGENT";
+  const role = ROLE.ROLE_AGENT;
 
   const toggleMenu = () => {
     setAgentSignupPopupOpen(false);
@@ -62,10 +60,7 @@ const AgentSignupPopup: FC<AgentSignupPopupProps> = ({ onClose }) => {
       <ImageInput setImgFile={setImgFile} />
       <EmailInput setEmail={setEmail} />
       <PasswordInput setPassword={setPassword} />
-      <PasswordCheckInput
-        password={password}
-        setPasswordCheck={setPasswordCheck}
-      />
+      <PasswordCheckInput password={password} setPasswordCheck={setPasswordCheck} />
       <NicknameInput nickname={nickname} setNickname={setNickname} />
       <GenderInput gender={gender} setGender={setGender} />
       <SignupBtn onClick={submitForm} />

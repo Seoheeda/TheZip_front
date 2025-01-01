@@ -27,3 +27,13 @@ export interface ImageInputProps {
   isMypage?: boolean;
   setImgFile: (imgFile: File | null) => void;
 }
+
+export interface AuthBtnProps {
+  isLoggedIn: boolean;
+  handleLogout: () => void;
+  openLoginPopup: () => void;
+}
+
+export interface UserNameBtnProps {
+  nickname: string;
+}

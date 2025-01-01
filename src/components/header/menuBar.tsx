@@ -1,10 +1,9 @@
-import React from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRecoilState } from "recoil";
 import { menuOpenState } from "../../recoil/atoms";
 
-const MenuBar = () => {
-  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenState); // 메뉴 열림 상태
+const MenuBar: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenState);
 
   // 메뉴 토글 함수
   const toggleMenu = () => {
