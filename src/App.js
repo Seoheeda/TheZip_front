@@ -1,6 +1,7 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { useRoutes, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
+
 import {
   chatbotOpenState,
   loginPopupOpenState,
@@ -31,97 +32,120 @@ import AgentSignupPopup from "./components/signup/AgentSignupPopup.tsx";
 import ChatbotBody from "./components/chatbot/chatbotBody";
 import PopupBtn from "./components/chatbot/popupBtn";
 import DropdownMenu from "./components/header/dropdownMenu";
-import { useNavigate } from "react-router-dom";
 
 const App = () => {
   const navigate = useNavigate();
+
   const [chatbotOpen, setChatbotOpen] = useRecoilState(chatbotOpenState);
-  const [loginPopupOpen, setLoginPopupOpen] =
-    useRecoilState(loginPopupOpenState);
-  const [userSignupPopupOpen, setUserSignupPopupOpen] = useRecoilState(
-    userSignupPopupOpenState,
-  );
-  const [agentSignupPopupOpen, setAgentSignupPopupOpen] = useRecoilState(
-    agentSignupPopupOpenState,
-  );
-  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenState); // 메뉴 열림 상태
+  const [loginPopupOpen, setLoginPopupOpen] = useRecoilState(loginPopupOpenState);
+  const [userSignupPopupOpen, setUserSignupPopupOpen] = useRecoilState(userSignupPopupOpenState);
+  const [agentSignupPopupOpen, setAgentSignupPopupOpen] = useRecoilState(agentSignupPopupOpenState);
+  const [menuOpen, setMenuOpen] = useRecoilState(menuOpenState);
+
+  const element = useRoutes([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/realprice_map",
+      children: [
+        { index: true, element: <RealPriceMap /> },
+        { path: "dong/:dongCode", element: <AreaSearchedPage /> },
+        { path: "dong/:dongCode/:min/:max", element: <AreaSearchedPage /> },
+        { path: "detail/:aptSeq", element: <AptDetailPage /> },
+      ],
+    },
+    {
+      path: "/charters",
+      children: [
+        { index: true, element: <CharterMap /> },
+        { path: "dong/:dongCode", element: <CharterAreaSearchedPage /> },
+        { path: "dong/:dongCode/:charterKind", element: <CharterAreaSearchedPage /> },
+        {
+          path: "dong/:dongCode/:depositMin/:depositMax",
+          element: <CharterAreaSearchedPage />,
+        },
+        {
+          path: "dong/:dongCode/:depositMin/:depositMax/:rentMin/:rentMax",
+          element: <CharterAreaSearchedPage />,
+        },
+        {
+          path: "detail/:charterId",
+          element: <CharterDetailPage />,
+        },
+        {
+          path: "college",
+          children: [
+            {
+              path: ":collegeName/:dongCode",
+              element: <CharterAreaSearchedPage />,
+            },
+            {
+              path: ":collegeName/:dongCode/:charterKind",
+              element: <CharterAreaSearchedPage />,
+            },
+            {
+              path: "detail/:charterId",
+              element: <CharterDetailPage />,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: "/board",
+      children: [
+        { index: true, element: <BoardPage /> },
+        { path: ":boardId", element: <BoardDetailPage /> },
+        { path: "edit/:boardId", element: <BoardUpdatePage /> },
+        { path: "post", element: <BoardPostPage /> },
+      ],
+    },
+    {
+      path: "/login",
+      element: <LoginPopup onClose={() => navigate("/")} />,
+    },
+    {
+      path: "/dormitory",
+      element: <Dormitory />,
+    },
+    {
+      path: "/mypage",
+      element: <Mypage />,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
+    },
+  ]);
 
   return (
     <>
+      {/* 공통 헤더 */}
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/realprice_map" element={<RealPriceMap />} />
-        <Route
-          path="/realprice_map/dong/:dongCode"
-          element={<AreaSearchedPage />}
-        />
-        <Route
-          path="/realprice_map/dong/:dongCode/:min/:max"
-          element={<AreaSearchedPage />}
-        />
-        <Route
-          path="/realprice_map/detail/:aptSeq"
-          element={<AptDetailPage />}
-        />
-        <Route path="/charters" element={<CharterMap />} />
-        <Route
-          path="/charters/dong/:dongCode"
-          element={<CharterAreaSearchedPage />}
-        />
-        <Route
-          path="/charters/dong/:dongCode/:charterKind"
-          element={<CharterAreaSearchedPage />}
-        />
-        <Route
-          path="/charters/dong/:dongCode/:depositMin/:depositMax"
-          element={<CharterAreaSearchedPage />}
-        />
-        <Route
-          path="/charters/dong/:dongCode/:depositMin/:depositMax/:rentMin/:rentMax"
-          element={<CharterAreaSearchedPage />}
-        />
-        <Route
-          path="/charters/college/:collegeName/:dongCode"
-          element={<CharterAreaSearchedPage />}
-        />
-        <Route
-          path="/charters/college/:collegeName/:dongCode/:charterKind"
-          element={<CharterAreaSearchedPage />}
-        />
-        <Route
-          path="/charters/detail/:charterId"
-          element={<CharterDetailPage />}
-        />
-        <Route
-          path="/charters/college/detail/:charterId"
-          element={<CharterDetailPage />}
-        />
-        <Route path="/board" element={<BoardPage />} />
-        <Route path="/board/:boardId" element={<BoardDetailPage />} />
-        <Route path="/board/edit/:boardId" element={<BoardUpdatePage />} />
-        <Route path="/board/post" element={<BoardPostPage />} />
-        <Route
-          path="/login"
-          element={<LoginPopup onClose={() => navigate("/")} />}
-        />
-        <Route path="/dormitory" element={<Dormitory />} />
-        <Route path="/mypage" element={<Mypage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+
+      {/* useRoutes로 정의한 element */}
+      {element}
+
+      {/* 로그인 팝업 */}
       {loginPopupOpen && (
         <LoginPopup
           onClose={() => setLoginPopupOpen(false)}
           onMouseUp={(e) => e.preventDefault()}
         />
       )}
-      {userSignupPopupOpen && (
-        <UserSignupPopup onClose={() => setUserSignupPopupOpen(false)} />
-      )}
-      {agentSignupPopupOpen && (
-        <AgentSignupPopup onClose={() => setAgentSignupPopupOpen(false)} />
-      )}
+
+      {/* 일반 회원가입 팝업 */}
+      {userSignupPopupOpen && <UserSignupPopup onClose={() => setUserSignupPopupOpen(false)} />}
+
+      {/* 중개 회원가입 팝업 */}
+      {agentSignupPopupOpen && <AgentSignupPopup onClose={() => setAgentSignupPopupOpen(false)} />}
+
+      {/* 드롭다운 메뉴 */}
       {menuOpen && <DropdownMenu />}
+
+      {/* 챗봇 */}
       <div className="relative z-10">
         {chatbotOpen && (
           <div className="fixed w-64 h-96 bottom-36 sm:bottom-64 right-28 sm:right-52">
