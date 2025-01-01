@@ -8,13 +8,22 @@ const Pagination = ({
   goToEnd,
 }) => (
   <div className="flex justify-center items-center space-x-2 py-4">
-    <button onClick={goToStart} className="px-1 py-2 text-xs bg-gray-200 rounded-md">
+    <button
+      onClick={goToStart}
+      className="px-1 py-2 text-xs bg-gray-200 rounded-md"
+    >
       Start
     </button>
-    <button onClick={() => handleGroupChange("prev")} className="px-1 py-1 bg-gray-200 rounded-md">
+    <button
+      onClick={() => handleGroupChange("prev")}
+      className="px-1 py-1 bg-gray-200 rounded-md"
+    >
       &lt;
     </button>
-    {Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((page) => (
+    {Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => startPage + i,
+    ).map((page) => (
       <button
         key={page}
         onClick={() => handlePageChange(page)}
@@ -25,10 +34,16 @@ const Pagination = ({
         {page}
       </button>
     ))}
-    <button onClick={() => handleGroupChange("next")} className="px-1 py-1 bg-gray-200 rounded-md">
+    <button
+      onClick={() => handleGroupChange("next")}
+      className="px-1 py-1 bg-gray-200 rounded-md"
+    >
       &gt;
     </button>
-    <button onClick={goToEnd} className="px-1 py-2 text-xs bg-gray-200 rounded-md">
+    <button
+      onClick={goToEnd}
+      className="px-1 py-2 text-xs bg-gray-200 rounded-md"
+    >
       End
     </button>
   </div>

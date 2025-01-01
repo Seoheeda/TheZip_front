@@ -59,14 +59,19 @@ const MapAptArea = () => {
                   `${charterDetail.charterGu} ${charterDetail.charterDong} ${charterDetail.bonbun}-${charterDetail.bubun}`,
                   function (result, status) {
                     if (status === window.kakao.maps.services.Status.OK) {
-                      const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+                      const coords = new window.kakao.maps.LatLng(
+                        result[0].y,
+                        result[0].x,
+                      );
                       const imageSrc = "/marker.png";
                       const imageSize = new window.kakao.maps.Size(40, 40);
-                      const imageOption = { offset: new window.kakao.maps.Point(12, 35) };
+                      const imageOption = {
+                        offset: new window.kakao.maps.Point(12, 35),
+                      };
                       const markerImage = new window.kakao.maps.MarkerImage(
                         imageSrc,
                         imageSize,
-                        imageOption
+                        imageOption,
                       );
 
                       const marker = new window.kakao.maps.Marker({
@@ -79,13 +84,13 @@ const MapAptArea = () => {
                     } else {
                       console.error("Geocoder addressSearch 실패: ", status);
                     }
-                  }
+                  },
                 );
               },
               (error) => {
                 console.error("위치 정보를 가져오지 못했습니다.", error);
                 alert("위치 정보를 사용할 수 없습니다.");
-              }
+              },
             );
           } else {
             alert("이 브라우저에서는 위치 정보가 지원되지 않습니다.");
@@ -139,7 +144,7 @@ const MapAptArea = () => {
         (error) => {
           console.error("위치 정보를 가져오지 못했습니다.", error);
           alert("위치 정보를 사용할 수 없습니다.");
-        }
+        },
       );
     } else {
       alert("이 브라우저에서는 위치 정보가 지원되지 않습니다.");

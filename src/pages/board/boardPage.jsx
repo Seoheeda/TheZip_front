@@ -91,13 +91,19 @@ const BoardPage = () => {
               }}
             >
               <div>
-                <h2 className="text-md font-semibold text-gray-800 cursor-pointer">{post.title}</h2>
-                <p className="text-sm text-gray-500 mt-1">관리자 · {post.createdAt.slice(0, 10)}</p>
+                <h2 className="text-md font-semibold text-gray-800 cursor-pointer">
+                  {post.title}
+                </h2>
+                <p className="text-sm text-gray-500 mt-1">
+                  관리자 · {post.createdAt.slice(0, 10)}
+                </p>
               </div>
               <div className="flex items-center space-x-2">
                 <button
                   className="text-primary-DEFAULT font-medium px-3 py-1 rounded-md border border-primary-2 hover:bg-primary-5"
-                  onClick={() => navigate(`/board/${post.boardId}`, { state: { post } })}
+                  onClick={() =>
+                    navigate(`/board/${post.boardId}`, { state: { post } })
+                  }
                 >
                   자세히 보기
                 </button>
@@ -107,7 +113,9 @@ const BoardPage = () => {
                       className="text-yellow-500 font-medium px-3 py-1 rounded-md border border-yellow-500 hover:bg-yellow-100"
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigate(`/board/edit/${post.boardId}`, { state: { post } });
+                        navigate(`/board/edit/${post.boardId}`, {
+                          state: { post },
+                        });
                       }}
                     >
                       <FaEdit />

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getCharterDetail } from "../../../api/charters";
-import { formatToEokCheon, formatToPeung, formatFloor } from "../../../utils/methods";
+import {
+  formatToEokCheon,
+  formatToPeung,
+  formatFloor,
+} from "../../../utils/methods";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -29,7 +33,9 @@ const HistoryList = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-lg font-bold mb-8 text-gray-800 text-center">실거래가 정보</h2>
+      <h2 className="text-lg font-bold mb-8 text-gray-800 text-center">
+        실거래가 정보
+      </h2>
       {loading ? (
         <div className="max-w-md mx-auto border border-gray-200 rounded-lg shadow-sm">
           <div className="py-4 px-6">
@@ -84,9 +90,11 @@ const HistoryList = () => {
               <div className="py-3 flex justify-between">
                 <span className="text-gray-500 text-sm">거래일</span>
                 <span className="font-medium text-yellow-500">
-                  {`${charterDetail.dealYear}-${String(charterDetail.dealMonth).padStart(
+                  {`${charterDetail.dealYear}-${String(
+                    charterDetail.dealMonth,
+                  ).padStart(
                     2,
-                    "0"
+                    "0",
                   )}-${String(charterDetail.dealDay).padStart(2, "0")}`}
                 </span>
               </div>
@@ -94,7 +102,9 @@ const HistoryList = () => {
           </div>
         </div>
       ) : (
-        <div className="text-center text-gray-500 mt-10">데이터를 불러오는 데 실패했습니다.</div>
+        <div className="text-center text-gray-500 mt-10">
+          데이터를 불러오는 데 실패했습니다.
+        </div>
       )}
     </div>
   );

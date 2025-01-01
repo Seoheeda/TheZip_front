@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { likeCharter, unLikeCharter, getCharterDetail } from "../../../api/charters";
+import {
+  likeCharter,
+  unLikeCharter,
+  getCharterDetail,
+} from "../../../api/charters";
 import { MdOutlinePlace } from "react-icons/md";
 import { LuBuilding } from "react-icons/lu";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";

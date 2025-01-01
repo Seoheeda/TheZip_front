@@ -43,10 +43,13 @@ export const EmailInput = ({
   );
 };
 
-export const PasswordInput = ({ setIsPasswordFocus, setIsEmailFocus, setPassword }) => {
-  
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  
+export const PasswordInput = ({
+  setIsPasswordFocus,
+  setIsEmailFocus,
+  setPassword,
+}) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const handlePasswordFocus = () => {
     setIsPasswordFocus(true);
     setIsEmailFocus(false);
@@ -75,7 +78,11 @@ export const PasswordInput = ({ setIsPasswordFocus, setIsEmailFocus, setPassword
         onClick={handlePasswordVisibilityToggle}
         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-600"
       >
-        {isPasswordVisible ? <IoEyeOff className="text-gray-600" /> : <IoEye className="text-gray-600"/>}
+        {isPasswordVisible ? (
+          <IoEyeOff className="text-gray-600" />
+        ) : (
+          <IoEye className="text-gray-600" />
+        )}
       </button>
     </div>
   );

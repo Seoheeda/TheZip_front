@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import { PasswordInput, PasswordCheckInput } from "../../components/signup/inputs";
+import {
+  PasswordInput,
+  PasswordCheckInput,
+} from "../../components/signup/inputs.tsx";
 import { changePassword } from "../../api/auth.ts";
 
-const PasswordChangeModal = ({ isOpen, onClose, password, setPassword, setIsPasswordChecked }) => {
+const PasswordChangeModal = ({
+  isOpen,
+  onClose,
+  password,
+  setPassword,
+  setIsPasswordChecked,
+}) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -44,15 +53,25 @@ const PasswordChangeModal = ({ isOpen, onClose, password, setPassword, setIsPass
       >
         <h2 className="text-center text-md mb-4">비밀번호 변경하기</h2>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">새 비밀번호</label>
+          <label className="block text-sm font-medium text-gray-700">
+            새 비밀번호
+          </label>
           <PasswordInput setPassword={setPassword} />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">새 비밀번호 확인</label>
-          <PasswordCheckInput password={password} setPasswordCheck={setNewPassword} />
+          <label className="block text-sm font-medium text-gray-700">
+            새 비밀번호 확인
+          </label>
+          <PasswordCheckInput
+            password={password}
+            setPasswordCheck={setNewPassword}
+          />
         </div>
         <div className="flex justify-end">
-          <button onClick={onClose} className="bg-gray-300 text-gray-700 p-2 rounded-md mr-2">
+          <button
+            onClick={onClose}
+            className="bg-gray-300 text-gray-700 p-2 rounded-md mr-2"
+          >
             취소
           </button>
           <button

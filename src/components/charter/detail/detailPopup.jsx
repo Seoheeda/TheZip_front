@@ -32,9 +32,15 @@ const DetailPopup = () => {
 
   return (
     <div className="border-r w-[650px] min-w-96">
-      <SearchAptBox charterName={charterDetail.name} charterDong={charterDetail.charterDong} />
+      <SearchAptBox
+        charterName={charterDetail.name}
+        charterDong={charterDetail.charterDong}
+      />
       <div className="flex m-3 border rounded-md">
-        <MapAptArea latitude={charterDetail.latitude} longitude={charterDetail.longitude} />
+        <MapAptArea
+          latitude={charterDetail.latitude}
+          longitude={charterDetail.longitude}
+        />
       </div>
       <CharterInfo />
       <HistoryList />

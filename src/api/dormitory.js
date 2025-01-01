@@ -2,7 +2,9 @@ import { httpClient } from "./http";
 
 export const fetchCollegeInfo = async (name) => {
   try {
-    const data = await httpClient.get(`/colleges/name/${encodeURIComponent(name)}`);
+    const data = await httpClient.get(
+      `/colleges/name/${encodeURIComponent(name)}`,
+    );
     return data;
   } catch (error) {
     console.error("fetchCollegeInfo 에러 발생:", error);

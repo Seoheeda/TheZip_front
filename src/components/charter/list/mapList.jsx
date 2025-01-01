@@ -76,11 +76,17 @@ const MapList = () => {
       return new Promise((resolve, reject) => {
         geocoder.addressSearch(address, (result, status) => {
           if (status === window.kakao.maps.services.Status.OK) {
-            const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+            const coords = new window.kakao.maps.LatLng(
+              result[0].y,
+              result[0].x,
+            );
 
             const imageSrc = "/marker.png";
             const imageSize = new window.kakao.maps.Size(40, 40);
-            const markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize);
+            const markerImage = new window.kakao.maps.MarkerImage(
+              imageSrc,
+              imageSize,
+            );
 
             const marker = new window.kakao.maps.Marker({
               map: map,

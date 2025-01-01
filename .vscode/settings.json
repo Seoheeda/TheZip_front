@@ -1,0 +1,21 @@
+{
+  // 기본적으로 저장 시 포맷팅을 활성화
+  "editor.formatOnSave": true,
+
+  // 기본 포맷터를 Prettier로 설정
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 파일별 기본 포맷터 설정
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

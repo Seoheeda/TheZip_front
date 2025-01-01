@@ -6,7 +6,6 @@ export const createClient = () => {
     timeout: process.env.REACT_APP_DEFAULT_TIMEOUT,
     withCredentials: true,
     headers: {
-      "Content-Type": "application/json;charset=utf-8",
       "Access-Control-Allow-Origin": "*",
     },
   });
@@ -20,7 +19,7 @@ export const createClient = () => {
       }
       return config;
     },
-    (error) => Promise.reject(error)
+    (error) => Promise.reject(error),
   );
 
   return axiosInstance;

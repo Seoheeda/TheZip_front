@@ -14,7 +14,10 @@ const FindDorm = () => {
   // 외부 클릭 감지용 useEffect
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
         // setName(""); // 외부 클릭 시 name 초기화
         setCollegeList([]);
       }

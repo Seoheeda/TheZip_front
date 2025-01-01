@@ -2,7 +2,9 @@ import { httpClient } from "./http";
 
 export const getAreaList = async (sido, gugun, dong) => {
   try {
-    const data = await httpClient.get(`/dongcodes?sido=${sido}&gugun=${gugun}&dong=${dong}`);
+    const data = await httpClient.get(
+      `/dongcodes?sido=${sido}&gugun=${gugun}&dong=${dong}`,
+    );
     return data;
   } catch (error) {
     console.error("getAreaList 에러 발생:", error);
@@ -32,7 +34,9 @@ export const searchByDongcode = async (dongcode) => {
 
 export const searchByCost = async (dongcode, min, max) => {
   try {
-    const data = await httpClient.get(`/houseinfos?dongcode=${dongcode}&min=${min}&max=${max}`);
+    const data = await httpClient.get(
+      `/houseinfos?dongcode=${dongcode}&min=${min}&max=${max}`,
+    );
     return data;
   } catch (error) {
     console.error("searchByCost 에러 발생:", error);
@@ -42,7 +46,9 @@ export const searchByCost = async (dongcode, min, max) => {
 
 export const searchLocByDongcode = async (dongcode) => {
   try {
-    const data = await httpClient.get(`/houseinfos/location?dongcode=${dongcode}`);
+    const data = await httpClient.get(
+      `/houseinfos/location?dongcode=${dongcode}`,
+    );
     return data;
   } catch (error) {
     console.error("searchLocByDongcode 에러 발생:", error);
@@ -53,7 +59,7 @@ export const searchLocByDongcode = async (dongcode) => {
 export const searchLocByCost = async (dongcode, min, max) => {
   try {
     const data = await httpClient.get(
-      `/houseinfos/location?dongcode=${dongcode}&min=${min}&max=${max}`
+      `/houseinfos/location?dongcode=${dongcode}&min=${min}&max=${max}`,
     );
     return data;
   } catch (error) {
@@ -129,7 +135,9 @@ export const fetchTopNApt = async (count) => {
 
 export const fetchImg = async (imageUrl, imageType) => {
   try {
-    const data = await httpClient.get(`/images?imageUrl=${imageUrl}&imageType=${imageType}`);
+    const data = await httpClient.get(
+      `/images?imageUrl=${imageUrl}&imageType=${imageType}`,
+    );
     return data;
   } catch (error) {
     console.error("fetchImg 에러 발생:", error);

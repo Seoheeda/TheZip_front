@@ -1,49 +1,58 @@
-import React, { useState, useRef } from "react";
-import { BsPersonFill } from "react-icons/bs";
+import React, { useState, useRef, FC } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa";
-import { checkEmail, checkNickname } from "../../api/auth.ts";
-import { emailRegexCheck, passwordRegexCheck } from "../../utils/methods";
+import { checkEmail, checkNickname } from "../../api/auth";
+import { emailRegexCheck, passwordRegexCheck } from "../../utils/methods.js";
 import {
   EMAIL_MENT,
   PASSWORD_MENT,
   PASSWORD_CHECK_MENT,
   NICKNAME_MENT,
   GENDER,
+  EmailCheckStatus,
+  PasswordCheckStatus,
 } from "../../utils/enum";
 import basicProfile from "../../assets/imgs/basicProfile.jpg";
+import {
+  EmailInputProps,
+  PasswordInputProps,
+  PasswordCheckInputProps,
+  NicknameInputProps,
+  GenderInputProps,
+  ImageInputProps,
+} from "../../types/interfaces";
 
-export const EmailInput = ({ email, setEmail }) => {
-  const [emailCheck, setEmailCheck] = useState(0);
-  const [isFocused, setIsFocused] = useState(false);
+export const EmailInput: FC<EmailInputProps> = ({ setEmail }) => {
+  const [emailCheck, setEmailCheck] = useState<EmailCheckStatus>(EmailCheckStatus.EMPTY);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
-  const submitForm = async (emailValue) => {
+  const submitForm = async (emailValue: string) => {
     try {
-      const response = await checkEmail(emailValue);
+      const data: boolean = await checkEmail(emailValue);
       // 이메일이 형식에 맞지만, 사용 불가한 경우
-      if (response.data === true) {
-        setEmailCheck(2);
+      if (data === true) {
+        setEmailCheck(EmailCheckStatus.UNAVAILABLE);
         // 이메일이 형식에 맞고, 사용 가능한 경우
       } else {
-        setEmailCheck(3);
+        setEmailCheck(EmailCheckStatus.AVAILABLE);
         setEmail(emailValue);
       }
-      console.log(response.data);
     } catch (error) {
       console.log("이메일 확인에 실패했습니다.");
       console.log(error);
     }
   };
-  const onEmailChange = (e) => {
-    const emailValue = e.target.value;
+
+  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const emailValue: string = e.target.value;
     if (emailRegexCheck(emailValue) === true) {
       submitForm(emailValue);
       // 이메일이 입력되지 않은 경우
     } else if (emailValue.length === 0) {
-      setEmailCheck(0);
+      setEmailCheck(EmailCheckStatus.EMPTY);
     } else {
       // 이메일이 형식에 맞지 않는 경우
-      setEmailCheck(1);
+      setEmailCheck(EmailCheckStatus.INVALID_FORMAT);
     }
   };
 
@@ -53,12 +62,12 @@ export const EmailInput = ({ email, setEmail }) => {
         <input
           type="text"
           placeholder="이메일"
-          className="border border-gray-1 h-9 rounded-md px-3 pr-8 mt-2 mb-1 text-sm" // 오른쪽 패딩 추가
+          className="border border-gray-1 h-9 rounded-md px-3 pr-8 mt-2 mb-1 text-sm"
           onChange={onEmailChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
-        {emailCheck === 3 && (
+        {emailCheck === EmailCheckStatus.AVAILABLE && (
           <FaCheck className="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary-1" />
         )}
       </div>
@@ -67,23 +76,26 @@ export const EmailInput = ({ email, setEmail }) => {
   );
 };
 
-export const PasswordInput = ({ setPassword }) => {
-  const [passwordCheck, setPasswordCheck] = useState(0);
-  const [isFocused, setIsFocused] = useState(false);
+export const PasswordInput: FC<PasswordInputProps> = ({ setPassword }) => {
+  const [passwordCheck, setPasswordCheck] = useState<PasswordCheckStatus>(
+    PasswordCheckStatus.EMPTY
+  );
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
-  const onPasswordChange = (e) => {
-    const passwordValue = e.target.value;
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordValue: string = e.target.value;
     if (passwordValue.length === 0) {
-      setPasswordCheck(0);
+      setPasswordCheck(PasswordCheckStatus.EMPTY);
       // 사용 가능한 비밀번호인 경우
     } else if (passwordRegexCheck(passwordValue) === true) {
-      setPasswordCheck(2);
+      setPasswordCheck(PasswordCheckStatus.VALID);
       setPassword(passwordValue);
     } else {
       // 비밀번호가 형식에 맞지 않는 경우
-      setPasswordCheck(1);
+      setPasswordCheck(PasswordCheckStatus.INVALID_FORMAT);
     }
   };
+
   return (
     <div className="flex flex-col">
       <div className="relative flex flex-col">
@@ -95,7 +107,7 @@ export const PasswordInput = ({ setPassword }) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
         />
-        {passwordCheck === 2 && (
+        {passwordCheck === PasswordCheckStatus.VALID && (
           <FaCheck className="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary-1" />
         )}
       </div>
@@ -106,13 +118,12 @@ export const PasswordInput = ({ setPassword }) => {
   );
 };
 
-export const PasswordCheckInput = ({ password, setPasswordCheck }) => {
-  const [passwordSameCheck, setPasswordSameCheck] = useState(0);
-  const [isFocused, setIsFocused] = useState(false);
+export const PasswordCheckInput: FC<PasswordCheckInputProps> = ({ password, setPasswordCheck }) => {
+  const [passwordSameCheck, setPasswordSameCheck] = useState<number>(0);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
-  const onPasswordCheckChange = (e) => {
-    const passwordCheckValue = e.target.value;
-    console.log(password);
+  const onPasswordCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordCheckValue: string = e.target.value;
     if (passwordCheckValue.length === 0) {
       setPasswordSameCheck(0);
       // 비밀번호가 일치하는 경우
@@ -124,6 +135,7 @@ export const PasswordCheckInput = ({ password, setPasswordCheck }) => {
       setPasswordSameCheck(1);
     }
   };
+
   return (
     <div className="flex flex-col">
       <div className="relative flex flex-col">
@@ -146,15 +158,15 @@ export const PasswordCheckInput = ({ password, setPasswordCheck }) => {
   );
 };
 
-export const NicknameInput = ({ nickname, setNickname }) => {
-  const [nicknameCheck, setNicknameCheck] = useState(0);
-  const [isFocused, setIsFocused] = useState(false);
+export const NicknameInput: FC<NicknameInputProps> = ({ nickname, setNickname }) => {
+  const [nicknameCheck, setNicknameCheck] = useState<number>(0);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
-  const submitForm = async (nicknameValue) => {
+  const submitForm = async (nicknameValue: string) => {
     try {
-      const response = await checkNickname(nicknameValue);
+      const data: boolean = await checkNickname(nicknameValue);
       // 사용 불가한 경우
-      if (response.data === true) {
+      if (data === true) {
         setNicknameCheck(2);
         // 사용 가능한 경우
       } else {
@@ -166,16 +178,20 @@ export const NicknameInput = ({ nickname, setNickname }) => {
       console.log(error);
     }
   };
-  const onNicknameChange = (e) => {
+
+  const onNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(e.target.value);
+    // 닉네임을 입력하지 않은 경우
     if (e.target.value.length === 0) {
       setNicknameCheck(0);
+      // 닉네임 글자수가 조건에 맞지 않는 경우
     } else if (e.target.value.length < 2 || e.target.value.length > 20) {
       setNicknameCheck(1);
     } else {
       submitForm(e.target.value);
     }
   };
+
   return (
     <div className="flex flex-col">
       <div className="relative flex flex-col">
@@ -199,9 +215,9 @@ export const NicknameInput = ({ nickname, setNickname }) => {
   );
 };
 
-export const GenderInput = ({ gender, setGender }) => {
-  const onGenderChange = (e) => {
-    setGender(GENDER[e.target.value]);
+export const GenderInput: FC<GenderInputProps> = ({ gender, setGender }) => {
+  const onGenderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGender(e.target.value as GENDER);
   };
   return (
     <div className="flex w-full my-5">
@@ -210,7 +226,7 @@ export const GenderInput = ({ gender, setGender }) => {
           type="radio"
           name="gender"
           checked={gender === "MALE"}
-          value={0}
+          value={GENDER.MALE}
           onChange={onGenderChange}
         />
         <div>남성</div>
@@ -220,7 +236,7 @@ export const GenderInput = ({ gender, setGender }) => {
           type="radio"
           name="gender"
           checked={gender === "FEMALE"}
-          value={1}
+          value={GENDER.FEMALE}
           onChange={onGenderChange}
         />
         <div>여성</div>
@@ -229,9 +245,9 @@ export const GenderInput = ({ gender, setGender }) => {
   );
 };
 
-export const ImageInput = ({ imgFile, setImgFile, isMypage }) => {
-  const imgRef = useRef(null);
-  const [previewImg, setPreviewImg] = useState(null);
+export const ImageInput: FC<ImageInputProps> = ({ setImgFile, isMypage = false }) => {
+  const imgRef = useRef<HTMLInputElement>(null);
+  const [previewImg, setPreviewImg] = useState<string | null>(null);
 
   const saveImgFile = () => {
     if (imgRef.current && imgRef.current.files) {
@@ -241,13 +257,13 @@ export const ImageInput = ({ imgFile, setImgFile, isMypage }) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        setPreviewImg(reader.result);
+        setPreviewImg(reader.result as string);
       };
     }
   };
 
   const handleClickImage = () => {
-    imgRef.current.click();
+    imgRef.current?.click();
   };
 
   return (
@@ -257,18 +273,18 @@ export const ImageInput = ({ imgFile, setImgFile, isMypage }) => {
           <img
             src={previewImg}
             alt="Profile"
-            className={`rounded-full mb-2 cursor-pointer ${isMypage ? "w-28 h-28" : "w-16 h-16"}`}
+            className={`rounded-full my-2 cursor-pointer ${isMypage ? "w-28 h-28" : "w-20 h-20"}`}
           />
         ) : (
           <img
             alt="Profile"
-            className={`rounded-full mb-2 cursor-pointer ${isMypage ? "w-28 h-28" : "w-16 h-16"}`}
+            className={`rounded-full my-2 cursor-pointer ${isMypage ? "w-28 h-28" : "w-20 h-20"}`}
             src={basicProfile}
           />
         )}
         <FaCirclePlus
           className={`text-primary-1 absolute bottom-1 right-0 cursor-pointer ${
-            isMypage ? "w-5 h-5 bottom-3 right-1" : "w-3 h-3 bottom-2 right-1"
+            isMypage ? "w-5 h-5 bottom-3 right-1" : "w-4 h-4 bottom-2 right-0"
           }`}
         />
       </div>

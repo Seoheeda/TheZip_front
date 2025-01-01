@@ -39,7 +39,9 @@ const AptDetail = ({ charterId }) => {
                 <div className="flex space-x-2 items-center">
                   <div className="text-lg">
                     서울특별시 {houseDetail.charterGu} {houseDetail.charterDong}{" "}
-                    {houseDetail.name ? houseDetail.name.replace(/^\(|\)$/g, "") : ""}
+                    {houseDetail.name
+                      ? houseDetail.name.replace(/^\(|\)$/g, "")
+                      : ""}
                   </div>
                 </div>
                 <SlPicture className="text-2xl text-gray-1" />
@@ -67,7 +69,9 @@ const AptDetail = ({ charterId }) => {
               <div className="divide-y divide-gray-200">
                 <div className="py-3 flex justify-between">
                   <span className="text-gray-500 text-sm">층</span>
-                  <span className="font-medium text-yellow-500">{houseDetail.floor}층</span>
+                  <span className="font-medium text-yellow-500">
+                    {houseDetail.floor}층
+                  </span>
                 </div>
                 <div className="py-3 flex justify-between">
                   <span className="text-gray-500 text-sm">면적</span>
@@ -84,9 +88,11 @@ const AptDetail = ({ charterId }) => {
                 <div className="py-3 flex justify-between">
                   <span className="text-gray-500 text-sm">거래일</span>
                   <span className="font-medium text-yellow-500">
-                    {`${houseDetail.dealYear}-${String(houseDetail.dealMonth).padStart(
+                    {`${houseDetail.dealYear}-${String(
+                      houseDetail.dealMonth,
+                    ).padStart(
                       2,
-                      "0"
+                      "0",
                     )}-${String(houseDetail.dealDay).padStart(2, "0")}`}
                   </span>
                 </div>
@@ -96,7 +102,9 @@ const AptDetail = ({ charterId }) => {
         </div>
       ) : (
         <p className="text-center text-gray-600 font-medium mt-8">
-          <span className="block text-xl font-bold text-gray-800 mb-2">집을 선택하세요!</span>
+          <span className="block text-xl font-bold text-gray-800 mb-2">
+            집을 선택하세요!
+          </span>
           선택된 집이 없어요. 위에서 집을 선택해 정보를 확인해보세요. 🏠
         </p>
       )}

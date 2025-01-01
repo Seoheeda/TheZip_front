@@ -43,12 +43,15 @@ const SearchBox = ({ searchTerm, setSearchTerm, charterList }) => {
                     )}
                   </div>
                   <div className="text-xs text-gray-500">
-                    {charter.constructionYear}&nbsp;&nbsp; {Math.round(formatToPeung(charter.size))}
+                    {charter.constructionYear}&nbsp;&nbsp;{" "}
+                    {Math.round(formatToPeung(charter.size))}
                     평&nbsp;&nbsp;
                   </div>
                 </div>
               </div>
-              <div className="text-sm text-primary-1">{charter.charterDong}</div>
+              <div className="text-sm text-primary-1">
+                {charter.charterDong}
+              </div>
             </li>
           ))}
         </ul>

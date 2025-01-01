@@ -68,7 +68,12 @@ const Region = () => {
   return (
     <div className="bg-white w-full sm:w-96 shadow-md rounded-lg p-4 mb-6">
       <h3 className="text-lg font-semibold mb-2">내 관심 지역</h3>
-      <AreaDropdown dongCode={dongCode} setDongCode={setDongCode} area={area} setArea={setArea} />
+      <AreaDropdown
+        dongCode={dongCode}
+        setDongCode={setDongCode}
+        area={area}
+        setArea={setArea}
+      />
       <div className="flex items-center">
         <input
           type="text"
@@ -112,7 +117,9 @@ const Region = () => {
               </li>
             ))
           ) : (
-            <li className="text-sm text-gray-500 text-center">관심 지역이 없습니다.</li>
+            <li className="text-sm text-gray-500 text-center">
+              관심 지역이 없습니다.
+            </li>
           )}
         </ul>
       )}

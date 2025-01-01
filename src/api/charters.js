@@ -3,7 +3,7 @@ import { httpClient } from "./http";
 export const searchByDongcode = async (dongcode, start, limit) => {
   try {
     const data = await httpClient.get(
-      `/charters?dongCode=${dongcode}&start=${start}&limit=${limit}`
+      `/charters?dongCode=${dongcode}&start=${start}&limit=${limit}`,
     );
     return data;
   } catch (error) {
@@ -12,11 +12,16 @@ export const searchByDongcode = async (dongcode, start, limit) => {
   }
 };
 
-export const searchByDongcodeYearlyMonthly = async (dongcode, start, limit, charterKind) => {
+export const searchByDongcodeYearlyMonthly = async (
+  dongcode,
+  start,
+  limit,
+  charterKind,
+) => {
   try {
     console.log(charterKind);
     const data = await httpClient.get(
-      `/charters?dongCode=${dongcode}&start=${start}&limit=${limit}&charterKind=${charterKind}`
+      `/charters?dongCode=${dongcode}&start=${start}&limit=${limit}&charterKind=${charterKind}`,
     );
     return data;
   } catch (error) {
@@ -28,7 +33,7 @@ export const searchByDongcodeYearlyMonthly = async (dongcode, start, limit, char
 export const searchByCostYearly = async (dongcode, start, limit, min, max) => {
   try {
     const data = await httpClient.get(
-      `/charters?dongCode=${dongcode}&charterKind=전세&depositMin=${min}&depositMax=${max}&start=${start}&limit=${limit}`
+      `/charters?dongCode=${dongcode}&charterKind=전세&depositMin=${min}&depositMax=${max}&start=${start}&limit=${limit}`,
     );
     return data;
   } catch (error) {
@@ -37,10 +42,18 @@ export const searchByCostYearly = async (dongcode, start, limit, min, max) => {
   }
 };
 
-export const searchByCostMonthly = async (dongcode, start, limit, min, max, minR, maxR) => {
+export const searchByCostMonthly = async (
+  dongcode,
+  start,
+  limit,
+  min,
+  max,
+  minR,
+  maxR,
+) => {
   try {
     const data = await httpClient.get(
-      `/charters?dongCode=${dongcode}&charterKind=월세&depositMin=${min}&depositMax=${max}&rentMin=${minR}&rentMax=${maxR}&start=${start}&limit=${limit}`
+      `/charters?dongCode=${dongcode}&charterKind=월세&depositMin=${min}&depositMax=${max}&rentMin=${minR}&rentMax=${maxR}&start=${start}&limit=${limit}`,
     );
     return data;
   } catch (error) {
@@ -69,10 +82,13 @@ export const countCharters = async (dongcode) => {
   }
 };
 
-export const countChartersByDongcodeYearlyMonthly = async (dongcode, charterKind) => {
+export const countChartersByDongcodeYearlyMonthly = async (
+  dongcode,
+  charterKind,
+) => {
   try {
     const data = await httpClient.get(
-      `/charters/count?dongCode=${dongcode}&charterKind=${charterKind}`
+      `/charters/count?dongCode=${dongcode}&charterKind=${charterKind}`,
     );
     return data;
   } catch (error) {
@@ -84,7 +100,7 @@ export const countChartersByDongcodeYearlyMonthly = async (dongcode, charterKind
 export const countChartersByCostYearly = async (dongcode, min, max) => {
   try {
     const data = await httpClient.get(
-      `/charters/count?dongCode=${dongcode}&charterKind=전세&depositMin=${min}&depositMax=${max}`
+      `/charters/count?dongCode=${dongcode}&charterKind=전세&depositMin=${min}&depositMax=${max}`,
     );
     return data;
   } catch (error) {
@@ -93,10 +109,16 @@ export const countChartersByCostYearly = async (dongcode, min, max) => {
   }
 };
 
-export const countChartersByCostMonthly = async (dongcode, min, max, minR, maxR) => {
+export const countChartersByCostMonthly = async (
+  dongcode,
+  min,
+  max,
+  minR,
+  maxR,
+) => {
   try {
     const data = await httpClient.get(
-      `/charters/count?dongCode=${dongcode}&charterKind=월세&depositMin=${min}&depositMax=${max}&rentMin=${minR}&rentMax=${maxR}`
+      `/charters/count?dongCode=${dongcode}&charterKind=월세&depositMin=${min}&depositMax=${max}&rentMin=${minR}&rentMax=${maxR}`,
     );
     return data;
   } catch (error) {
@@ -120,9 +142,12 @@ export const fetchLikeCharter = async (params) => {
     // params가 존재하면 query string에 추가
     const queryString = params ? params : "";
 
-    const data = await httpClient.get(`/interest-charter?charterKind=${queryString}`, {
-      headers: { "Content-Type": "application/json" },
-    });
+    const data = await httpClient.get(
+      `/interest-charter?charterKind=${queryString}`,
+      {
+        headers: { "Content-Type": "application/json" },
+      },
+    );
     return data;
   } catch (error) {
     console.error("fetchLikeCharter 에러 발생:", error);
@@ -153,7 +178,9 @@ export const unLikeCharter = async (charterId) => {
 
 export const fetchTopNCharter = async (charterKind, count) => {
   try {
-    const data = await httpClient.get(`/charters/likes?charterKind=${charterKind}&count=${count}`);
+    const data = await httpClient.get(
+      `/charters/likes?charterKind=${charterKind}&count=${count}`,
+    );
     return data;
   } catch (error) {
     console.error("fetchTopNCharter 에러 발생:", error);

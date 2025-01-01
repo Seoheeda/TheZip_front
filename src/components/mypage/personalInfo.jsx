@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import PasswordChangeModal from "./passwordModal";
 import LoginCheckModal from "./loginCheckModal";
 import { getUserInfo, changeUserInfo } from "../../api/auth.ts";
-import { ImageInput, NicknameInput, GenderInput } from "../../components/signup/inputs";
+import {
+  ImageInput,
+  NicknameInput,
+  GenderInput,
+} from "../../components/signup/inputs.tsx";
 
 const PersonalInfo = () => {
   const [userInfo, setUserInfo] = useState({
@@ -54,7 +58,12 @@ const PersonalInfo = () => {
     console.log(nickname);
 
     try {
-      const response = await changeUserInfo(nickname, gender, imgFile, accessToken);
+      const response = await changeUserInfo(
+        nickname,
+        gender,
+        imgFile,
+        accessToken,
+      );
       console.log(response);
       alert("변경되었습니다 :)");
     } catch (error) {
@@ -77,7 +86,9 @@ const PersonalInfo = () => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700">닉네임</label>
+        <label className="block text-sm font-medium text-gray-700">
+          닉네임
+        </label>
         <NicknameInput nickname={nickname} setNickname={setNickname} />
       </div>
       <div className="mb-4">

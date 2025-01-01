@@ -103,7 +103,9 @@ const LikeCharter = ({ type }) => {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center py-10 w-full">관심 매물이 없습니다.</p>
+          <p className="text-gray-500 text-center py-10 w-full">
+            관심 매물이 없습니다.
+          </p>
         )}
       </div>
     </div>

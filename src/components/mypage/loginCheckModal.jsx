@@ -50,7 +50,9 @@ const LoginCheckModal = ({
       >
         <h2 className="text-center text-md mb-4">로그인 확인</h2>
         <div className="mb-4 w-full">
-          <label className="block text-sm font-medium text-gray-700">이메일</label>
+          <label className="block text-sm font-medium text-gray-700">
+            이메일
+          </label>
           <input
             type="text"
             placeholder="이메일"
@@ -60,7 +62,9 @@ const LoginCheckModal = ({
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">비밀번호</label>
+          <label className="block text-sm font-medium text-gray-700">
+            비밀번호
+          </label>
           <input
             type="password"
             placeholder="비밀번호"
@@ -69,7 +73,10 @@ const LoginCheckModal = ({
           />
         </div>
         <div className="flex justify-end">
-          <button onClick={onClose} className="bg-gray-300 text-gray-700 p-2 rounded-md mr-2">
+          <button
+            onClick={onClose}
+            className="bg-gray-300 text-gray-700 p-2 rounded-md mr-2"
+          >
             취소
           </button>
           <button

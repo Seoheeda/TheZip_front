@@ -3,7 +3,9 @@ import React from "react";
 const Toggle = ({ options, value, onChange }) => {
   return (
     <div className="mt-6">
-      <div className="flex text-lg font-medium text-gray-600 mb-3">매물 종류</div>
+      <div className="flex text-lg font-medium text-gray-600 mb-3">
+        매물 종류
+      </div>
       <div className="mt-2 flex text-sm xl:text-lg space-x-2">
         {options.map((option, index) => (
           <button

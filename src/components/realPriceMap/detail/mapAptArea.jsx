@@ -28,7 +28,7 @@ const MapAptArea = ({ latitude, longitude }) => {
       // 작은 사각형 추가
       const rectangleBounds = new naver.maps.LatLngBounds(
         new naver.maps.LatLng(latitude - 0.001, longitude - 0.001), // 왼쪽 아래 좌표
-        new naver.maps.LatLng(latitude + 0.001, longitude + 0.001) // 오른쪽 위 좌표
+        new naver.maps.LatLng(latitude + 0.001, longitude + 0.001), // 오른쪽 위 좌표
       );
 
       new naver.maps.Rectangle({

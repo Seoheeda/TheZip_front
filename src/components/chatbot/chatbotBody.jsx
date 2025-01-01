@@ -97,13 +97,17 @@ const ChatbotBody = () => {
           </div>
         )}
         {loading && (
-          <span className="block text-center text-gray-500">답변을 기다리고 있습니다...</span>
+          <span className="block text-center text-gray-500">
+            답변을 기다리고 있습니다...
+          </span>
         )}
         {messages.map((msg, index) => (
           <div
             key={index}
             className={`${
-              msg.sender === "user" ? "bg-primary-4 text-md w-full" : "bg-gray-3 text-md"
+              msg.sender === "user"
+                ? "bg-primary-4 text-md w-full"
+                : "bg-gray-3 text-md"
             } px-4 py-2 rounded-lg  break-words`}
           >
             {msg.sender === "user" ? "나" : "챗봇"}: {msg.message}

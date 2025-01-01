@@ -11,7 +11,9 @@ const FindHouse = () => {
 
   return (
     <div className="flex flex-col h-full w-full lg:w-1/2 border border-gray-2 rounded-2xl p-10 items-center bg-gradient-to-br from-white to-gray-100 shadow-xl">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-7">내 관심 집 보기</h2>
+      <h2 className="text-2xl font-semibold text-gray-700 mb-7">
+        내 관심 집 보기
+      </h2>
       <div className="flex w-full space-x-5">
         <div className="flex x-1/3 xl:w-1/4 pb-3">
           <CateChoice

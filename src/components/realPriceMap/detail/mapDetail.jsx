@@ -54,7 +54,7 @@ const MapAptArea = () => {
             (error) => {
               console.error("위치 정보를 가져오지 못했습니다.", error);
               alert("위치 정보를 사용할 수 없습니다.");
-            }
+            },
           );
         } else {
           alert("이 브라우저에서는 위치 정보가 지원되지 않습니다.");
@@ -86,10 +86,16 @@ const MapAptArea = () => {
 
     const bounds = new window.kakao.maps.LatLngBounds();
 
-    const markerPosition = new window.kakao.maps.LatLng(aptDetail.latitude, aptDetail.longitude);
+    const markerPosition = new window.kakao.maps.LatLng(
+      aptDetail.latitude,
+      aptDetail.longitude,
+    );
     const markerImageSrc = "/marker.png";
     const markerImageSize = new window.kakao.maps.Size(40, 40);
-    const markerImage = new window.kakao.maps.MarkerImage(markerImageSrc, markerImageSize);
+    const markerImage = new window.kakao.maps.MarkerImage(
+      markerImageSrc,
+      markerImageSize,
+    );
 
     const marker = new window.kakao.maps.Marker({
       map: map,
@@ -134,7 +140,7 @@ const MapAptArea = () => {
         (error) => {
           console.error("위치 정보를 가져오지 못했습니다.", error);
           alert("위치 정보를 사용할 수 없습니다.");
-        }
+        },
       );
     } else {
       alert("이 브라우저에서는 위치 정보가 지원되지 않습니다.");

@@ -7,7 +7,9 @@ const Hero = ({ onButtonClick }) => {
       <div className="container mx-auto text-center px-4">
         {/* 제목과 설명 */}
         <h1 className="relative text-2xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight animate-bounceSlow">
-          <span className="px-4 py-2 rounded">🏡 The Zip, 집 찾기의 모든 것을 압축하다</span>
+          <span className="px-4 py-2 rounded">
+            🏡 The Zip, 집 찾기의 모든 것을 압축하다
+          </span>
         </h1>
         <p className="mt-6 text-xl sm:text-2xl text-white font-light animate-fadeIn">
           완벽한 집을 빠르고 쉽게, 더집에서 만나세요.
@@ -21,7 +23,9 @@ const Hero = ({ onButtonClick }) => {
             <div className="w-12 lg:w-16 h-12 lg:h-16 flex justify-center items-center bg-white rounded-full shadow-md">
               <span className="text-2xl lg:text-4xl">🔍</span>
             </div>
-            <p className="mt-4 text-lg lg:text-2xl text-gray-900 font-semibold">쉽고 빠른 검색</p>
+            <p className="mt-4 text-lg lg:text-2xl text-gray-900 font-semibold">
+              쉽고 빠른 검색
+            </p>
             <p className="text-gray-700 text-md lg:text-lg mt-2">
               원하는 지역과 조건을 간단히 입력하세요.
             </p>
