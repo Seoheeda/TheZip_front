@@ -1,70 +1,186 @@
-# Getting Started with Create React App
+<div align="center">
+  
+# The Zip, 집 찾기의 모든 것을 압축하다
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+완벽한 집을 빠르고 쉽게, 더집에서 만나세요.
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+## 🚀 주요 서비스
 
-### `npm start`
+1. 매매 실거래가 (조회, 검색 및 필터링)
+2. 월세/전세 실거래가 (조회, 검색 및 필터링)
+3. 대학교별 기숙사 정보 제공 및 비교
+4. 지도를 통해 간편한 정보 제공
+5. 나만의 서비스 가이드, 집PT
+6. 일반 회원가입과 카카오 간편 로그인
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 👥 팀원 소개
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Seoheeda"><img src="https://github.com/Seoheeda.png" width="100px;" alt=""/><br /><sub><b>윤서희</b></sub></a><br />👑프론트엔드<br/><a href="https://github.com/Seoheeda"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"/></a></td>
+    <td align="center"><a href="https://github.com/dlskawo0409"><img src="https://github.com/dlskawo0409.png" width="100px;" alt=""/><br /><sub><b>이남재</b></sub></a><br />👑백엔드<br/><a href="https://github.com/dlskawo0409"><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"/></a></td>   
+  </tr>
+</table>
 
-### `npm test`
+## 🛠 기술 스택
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<table>
+<tr>
+    <td align="center">프론트엔드</td>
+    <td>
+      <img src="https://img.shields.io/badge/JavaScript-ECD53F?style=flat&logo=javascript&logoColor=white"/>
+       <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"/>
+      <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white"/>
+      <img src="https://img.shields.io/badge/TailwindCss-06B6D4?style=flat&logo=tailwindcss&logoColor=white"/>
+       <img src="https://img.shields.io/badge/recoil-3578E5?style=flat&logo=tailwindcss&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">백엔드</td>
+    <td>
+      <img src="https://img.shields.io/badge/Java_17-ED8B00?style=flat&logo=openjdk&logoColor=white"/>
+       <img src="https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring-security&logoColor=white"/>
+      <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat&logo=spring&logoColor=white"/>
+      <img src="https://img.shields.io/badge/swagger-85EA2D?style=flat&logo=gradle&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">데이터베이스</td>
+    <td>
+      <img src="https://img.shields.io/badge/MySQL_8.0-4479A1?style=flat&logo=mysql&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">인프라</td>
+    <td>
+      <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonwebservices&logoColor=white"/>
+      <img src="https://img.shields.io/badge/vercel-000000?style=flat&logo=jenkins&logoColor=white"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">기획/디자인</td>
+    <td>
+      <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white"/>
+      <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white"/>
+    </td>
+  </tr>
+</table>
 
-### `npm run build`
+## 📈 기획 및 설계 자료
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 📜 기능 명세서
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="./readme/featureDoc.png"/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 📜 Swagger 문서
 
-### `npm run eject`
+<img src="./readme/swagger.png"/>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📜 피그마 목업
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img src="./readme/figma.png"/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 📜 ERD
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<img src="./readme/erd.png"/>
 
-## Learn More
+## ✨ 개발 기능 및 페이지
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 메인 페이지
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="./readme/mainPage.png"/>
 
-### Code Splitting
+### 회원가입 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<img src="./readme/signUp.png"/>
 
-### Analyzing the Bundle Size
+### 로그인 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="./readme/logIn.png"/>
 
-### Making a Progressive Web App
+### 실거래가 검색 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img src="./readme/houseMain.png"/>
 
-### Advanced Configuration
+### 실거래가 조회 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<img src="./readme/houseList.png"/>
 
-### Deployment
+### 실거래가 상세 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<img src="./readme/houseDetail.png"/>
 
-### `npm run build` fails to minify
+### 월세/전세가 검색 페이지
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="./readme/charterMain.png"/>
+
+### 월세/전세가 조회 페이지
+
+<img src="./readme/charterList.png"/>
+
+### 월세/전세가 상세 페이지
+
+<img src="./readme/charterDetail.png"/>
+
+### 기숙사 정보 조회 및 월세/전세와 비교하기 페이지
+
+<img src="./readme/dormitory.png"/>
+
+### 학교 주변 매물 보기 페이지
+
+<img src="./readme/schoolHouse.png"/>
+
+### 마이페이지
+
+<img src="./readme/profilePage.png"/>
+
+### 집PT
+
+<img src="./readme/zipPT.png"/>
+
+### 공지사항 페이지
+
+<img src="./readme/board.png"/>
+
+## 🖼️ 시연 영상
+
+[시연 영상상](https://www.youtube.com/watch?v=JY6e79v5MXg)
+
+## 💻 로컬 개발 환경 설정
+
+### 필수 요구사항
+
+```
+- JDK 17
+- Gradle
+- MySQL 9.1
+```
+
+## 📜 개발 규칙
+
+### Git 브랜치 전략
+
+```
+main (배포용)
+└── develop (개발용)
+    ├── feat/* (기능 개발)
+    └── fix/* (버그 수정)
+```
+
+<img src="./readme/branch.png"/>
+
+### 커밋 메시지
+
+| 커밋 유형  | 의미                                                |
+| ---------- | --------------------------------------------------- |
+| `Feat`     | 새로운 기능 추가                                    |
+| `Fix`      | 버그 수정                                           |
+| `Refactor` | 코드 리팩토링                                       |
+| `Design`   | CSS 등 사용자 UI 디자인 변경                        |
+| `Comment`  | 필요한 주석 추가 및 변경                            |
+| `Rename`   | 파일 또는 폴더 명을 수정하거나 옮기는 작업만인 경우 |
+| `Remove`   | 파일을 삭제하는 작업만 수행한 경우                  |
+
+</div>
