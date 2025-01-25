@@ -70,7 +70,7 @@
 
 ## 🚩 백엔드 레포지토리
 
-[시연 영상상](https://github.com/dlskawo0409/The_Zip_backend)
+[백엔드 레포지토리 링크](https://github.com/dlskawo0409/The_Zip_backend)
 
 ## 📈 기획 및 설계 자료
 
